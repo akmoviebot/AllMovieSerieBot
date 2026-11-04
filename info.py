@@ -86,7 +86,7 @@ UPDATE_CHNL_LNK = environ.get('UPDATE_CHNL_LNK', 'https://t.me/Movieupdatewithak
 # ==============================================================================
 # Primary MongoDB Connection URI & Database details
 DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://sv6019244:sandhu0123@cluster0.chuysmh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-DATABASE_NAME = environ.get('DATABASE_NAME', 'Cluster0')
+DATABASE_NAME = environ.get('DATABASE_NAME', 'cluster0')
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'AllMovieSerieBot')
 
 # Secondary MongoDB for multiple DB load balancing
