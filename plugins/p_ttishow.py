@@ -15,7 +15,7 @@ from bot import botStartTime
 
 logger = logging.getLogger(__name__)
 
-"""-----------------------------------------https://t.me/dreamxbotz--------------------------------------"""
+"""-----------------------------------------https://t.me/Movieupdatewithak01--------------------------------------"""
 
 @Client.on_message(filters.new_chat_members & filters.group)
 async def save_group(client, message):
@@ -24,7 +24,7 @@ async def save_group(client, message):
         if not await db.get_chat(message.chat.id):
             total=await client.get_chat_members_count(message.chat.id)
             dreamx_botz = message.from_user.mention if message.from_user else "Anonymous" 
-            await client.send_message(LOG_CHANNEL, script.LOG_TEXT_G.format(message.chat.title, message.chat.id, total, dreamx_botz))       
+            await client.send_message(LOG_CHANNEL, script.LOG_TEXT_G.format(message.chat.title, message.chat.id, total, Movieupdatewithak01))       
             await db.add_chat(message.chat.id, message.chat.title)
         if message.chat.id in temp.BANNED_CHATS:
 
