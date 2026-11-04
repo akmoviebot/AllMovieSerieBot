@@ -138,7 +138,7 @@ MAX_BTN = is_enabled(environ.get('MAX_BTN', "True"), True)
 NO_RESULTS_MSG = is_enabled(environ.get("NO_RESULTS_MSG", "True"), True)
 SPELL_CHECK_REPLY = is_enabled(environ.get("SPELL_CHECK_REPLY", "True"), True)
 MELCOW_NEW_USERS = is_enabled(environ.get('MELCOW_NEW_USERS', "False"), False)
-ULTRA_FAST_MODE = is_enabled(environ.get('ULTRA_FAST_MODE'), False)
+ULTRA_FAST_MODE = is_enabled(environ.get('ULTRA_FAST_MODE'), True)
 MAINTENANCE = is_enabled(environ.get('MAINTENANCE', "False"), False)
 
 # Captions & Alerts
@@ -242,8 +242,8 @@ STAR_PREMIUM_PLANS = {
 # 9. SERVER, STREAMING & WEB SETTINGS
 # ==============================================================================
 # Streaming Mode (Keep False on Render free tier to conserve bandwidth)
-STREAM_MODE = is_enabled(environ.get('STREAM_MODE', "True"), False)
-PREMIUM_STREAM_MODE = is_enabled(environ.get('PREMIUM_STREAM_MODE', "False"), False)
+STREAM_MODE = is_enabled(environ.get('STREAM_MODE', "True"), True)
+PREMIUM_STREAM_MODE = is_enabled(environ.get('PREMIUM_STREAM_MODE', "True"), False)
 
 # Server Binding & Host Configuration
 ON_HEROKU = 'DYNO' in environ
