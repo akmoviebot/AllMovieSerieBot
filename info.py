@@ -243,7 +243,7 @@ STAR_PREMIUM_PLANS = {
 # ==============================================================================
 # Streaming Mode (Keep False on Render free tier to conserve bandwidth)
 STREAM_MODE = is_enabled(environ.get('STREAM_MODE', "True"), True)
-PREMIUM_STREAM_MODE = is_enabled(environ.get('PREMIUM_STREAM_MODE', "True"), False)
+PREMIUM_STREAM_MODE = is_enabled(environ.get('PREMIUM_STREAM_MODE', "False"), False)
 
 # Server Binding & Host Configuration
 ON_HEROKU = 'DYNO' in environ
