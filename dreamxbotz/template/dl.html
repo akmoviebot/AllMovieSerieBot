@@ -1,304 +1,436 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <!-- Replace this link with your new logo direct link from imgbb.com -->
-    <link rel="shortcut icon" href="https://kommodo.ai/i/m9vJY7xPYSMzhdFDF6MP" type="image/x-icon">
-    <meta property="og:image" content="https://kommodo.ai/i/m9vJY7xPYSMzhdFDF6MP" itemprop="thumbnailUrl">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{file_name}} | CINEHUBPRO STREAMING</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type='text/css' href="https://drive----google.com/uc?export=view&id=1pVLG4gZy7jdow3sO-wFS06aP_A9QX0O6">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Delius">
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.9/plyr.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{file_name}} | CINEHUBPRO STREAMING</title>
+  <link rel="shortcut icon" href="https://kommodo.ai/i/m9vJY7xPYSMzhdFDF6MP">
+  <meta property="og:image" content="https://kommodo.ai/i/m9vJY7xPYSMzhdFDF6MP">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --red: #ff263d;
+      --red-dark: #a90d24;
+      --bg: #08090e;
+      --panel: #12141d;
+      --panel-2: #191c27;
+      --text: #f7f7fb;
+      --muted: #a1a5b3;
+      --line: rgba(255,255,255,.09);
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--bg); scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 50% -15%, rgba(155,13,37,.25), transparent 48%),
+        var(--bg);
+      font-family: Inter, system-ui, sans-serif;
+      min-height: 100vh;
+    }
+
+    a { text-decoration: none; }
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1030;
+      background: rgba(8,9,14,.9);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 1400px;
+      padding: 12px 22px;
+      margin: auto;
+    }
+
+    .menu-button {
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
+      border: 1px solid rgba(255,38,61,.45);
+      border-radius: 12px;
+      color: white;
+      background: #151720;
+      display: grid;
+      place-items: center;
+      font-size: 1.25rem;
+    }
+
+    .brand { display: inline-flex; align-items: center; min-width: 0; }
+    .brand img {
+      display: block;
+      width: min(245px, 58vw);
+      max-height: 56px;
+      object-fit: contain;
+    }
+
+    .nav-tag {
+      margin-left: auto;
+      color: #ffb5bf;
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      border: 1px solid rgba(255,38,61,.25);
+      background: rgba(255,38,61,.08);
+      padding: 8px 12px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .page-wrap { max-width: 1200px; margin: auto; padding: 22px 18px 40px; }
+    .movie-heading { text-align: center; margin: 8px auto 22px; }
+    .eyebrow {
+      color: var(--red);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .movie-title {
+      font-size: clamp(1.1rem, 3.5vw, 2rem);
+      font-weight: 800;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+      margin: 0 auto;
+      max-width: 900px;
+    }
+
+    .player-shell {
+      padding: 7px;
+      border: 1px solid rgba(255,38,61,.4);
+      border-radius: 18px;
+      background: linear-gradient(145deg, #1b1d28, #090a0f);
+      box-shadow: 0 18px 55px rgba(0,0,0,.42), 0 0 35px rgba(255,38,61,.07);
+      overflow: hidden;
+    }
+
+    #player { display: block; width: 100%; aspect-ratio: 16 / 9; background: #000; }
+    .plyr { --plyr-color-main: var(--red); --plyr-video-control-color: white; border-radius: 12px; }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 30px 0 15px;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .section-heading::before {
+      content: "";
+      width: 4px;
+      height: 22px;
+      border-radius: 8px;
+      background: var(--red);
+    }
+
+    .player-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .player-option {
+      appearance: none;
+      width: 100%;
+      min-height: 116px;
+      padding: 18px 12px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: linear-gradient(145deg, var(--panel-2), var(--panel));
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font: inherit;
+      font-size: .88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .player-option i { font-size: 1.8rem; color: #ff5266; }
+    .player-option:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,38,61,.7);
+      box-shadow: 0 12px 28px rgba(255,38,61,.1);
+    }
+
+    .download-button {
+      grid-column: 1 / -1;
+      min-height: 54px;
+      border: 0;
+      border-radius: 14px;
+      color: white;
+      font-weight: 800;
+      letter-spacing: .02em;
+      background: linear-gradient(100deg, #a50e25, #f52540, #a50e25);
+      box-shadow: 0 8px 24px rgba(255,38,61,.18);
+      cursor: pointer;
+      transition: transform .2s ease, filter .2s ease;
+    }
+
+    .download-button:hover { transform: translateY(-2px); filter: brightness(1.12); }
+
+    .notice {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: #11141c;
+      color: var(--muted);
+      text-align: center;
+      font-size: .84rem;
+      line-height: 1.6;
+    }
+
+    .notice strong { color: #fff; }
+    .notice a { color: #ff6476; font-weight: 800; text-decoration: underline; }
+
+    .site-footer {
+      border-top: 1px solid var(--line);
+      background: #090a10;
+      padding: 28px 18px 18px;
+      text-align: center;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .social-links a {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: #fff;
+      background: #151720;
+      font-size: 1.1rem;
+      transition: .2s ease;
+    }
+
+    .social-links a:hover { color: white; background: var(--red-dark); border-color: var(--red); }
+    .footer-logo { width: 130px; max-width: 45vw; margin: 0 auto 12px; }
+    .footer-copy { color: #7e8391; font-size: .78rem; }
+
+    .offcanvas { background: #10121a; color: white; }
+    .offcanvas .btn-close { filter: invert(1); }
+    .side-logo { width: 64px; height: 64px; object-fit: contain; }
+    .side-link {
+      display: block;
+      color: #e8e9ee;
+      padding: 12px 14px;
+      margin: 7px 0;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #171a24;
+    }
+    .side-link:hover { color: white; border-color: var(--red); }
+
+    @media (max-width: 700px) {
+      .nav-inner { min-height: 64px; padding: 10px 12px; gap: 10px; }
+      .brand img { width: min(190px, 55vw); max-height: 44px; }
+      .nav-tag { font-size: .58rem; padding: 7px 9px; letter-spacing: .08em; }
+      .page-wrap { padding: 18px 10px 30px; }
+      .player-shell { padding: 4px; border-radius: 12px; }
+      .plyr { border-radius: 8px; }
+      .player-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+      .player-option { min-height: 100px; padding: 14px 8px; font-size: .8rem; }
+      .download-button { min-height: 50px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: .01ms !important; scroll-behavior: auto !important; }
+    }
+  </style>
 </head>
 
-<body class="bg-black text-light">
-    <header>
-        <!-- Navbar -->
-        <nav class="navbar bg-dark border-bottom border-danger p-lg-4 p-2">
-           <div class="d-flex align-items-center w-100">
-             <!-- Sidebar Menu -> Open Button -->
-             <button class="btn border border-danger-subtle wow animate__animated animate__fadeInLeft animate__delay-1s" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" class="bi bi-menu-button-wide-fill" viewBox="0 0 16 16"><path fill="url(#PMWUiMSnUf2R_PPJ6rqZea_44112_gr1)" d="M1.5 0A1.5 1.5 0 0 0 0 1.5v2A1.5 1.5 0 0 0 1.5 5h13A1.5 1.5 0 0 0 16 3.5v-2A1.5 1.5 0 0 0 14.5 0h-13zm1 2h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1zm9.927.427A.25.25 0 0 1 12.604 2h.792a.25.25 0 0 1 .177.427l-.396.396a.25.25 0 0 1-.354 0l-.396-.396zM0 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8zm1 3v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2H1zm14-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2h14zM2 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"/></svg>
-            </button>
-            <!-- sidebar menu -->
-            <div class="offcanvas offcanvas-start bg-dark text-light" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-            <div class="offcanvas-header d-block">
-                <div class="justify-content-end align-items-end d-flex">
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="d-flex flex-column align-items-center text-center mt-2">
-                    <!-- Sidebar Wide Logo -->
-                    <img src="https://kommodo.ai/i/m9vJY7xPYSMzhdFDF6MP" style="max-width: 220px; height: auto; box-shadow: 3px 5px 11px black;" class="rounded mb-2" alt="CineHubPro Logo">
-                    <div class="p-1">
-                        <h4 class="offcanvas-title font-semibold wow animate__animated animate__fadeInLeft" id="offcanvasWithBothOptionsLabel" style="text-shadow: 3px 5px 11px black;">CINEHUBPRO</h4>
-                        <p class="text-red-500 font-semibold wow animate__animated animate__fadeIn animate__delay-1s animate__infinite">Enjoy</p>
-                    </div>
-                </div>
-                <a href="https://cinehubpro.free.nf" target="_blank" class="btn btn-outline-danger w-100 text-light fw-semibold flex justify-center items-center gap-2 mt-2 wow animate__animated animate__fadeInDown">
-                    Follow WEBSITE 
-                </a>
-                <div class="d-flex gap-1 px-1 mt-2 wow animate__animated animate__fadeInLeft animate__delay-1s">
-                    <a href="https://t.me/movieupdatewithak01" target="_blank" class="btn btn-secondary w-50 text-light fw-semibold flex justify-center items-center gap-1 text-xs">
-                        Updates
-                    </a>
-                    <a href="https://t.me/CineHubProsupport" target="_blank" class="btn btn-primary w-50 text-light fw-semibold flex justify-center items-center gap-1 text-xs">
-                        Support 
-                    </a> 
-                </div>
-            </div>
-            <div class="offcanvas-body">
-                <div class="wow animate__animated animate__fadeInLeft">
-                    <h2 class="font-semibold text-light" style="text-shadow: 1px 2px 8px black;">Explore</h2>
-                </div>
-                <div class="d-block px-3 wow animate__animated animate__fadeInRight">
-                    <a href="https://cinehubpro.free.nf" type="button" class="btn btn-outline-secondary text-light w-100 mt-1">Trending Movies</a>
-                    <a href="https://cinehubpro.free.nf" type="button" class="btn btn-outline-secondary text-light w-100 mt-1">Newly Released Movies</a>
-                    <a href="https://cinehubpro.free.nf" type="button" class="btn btn-outline-secondary text-light w-100 mt-1">Bollywood Movies</a>
-                    <a href="https://cinehubpro.free.nf" type="button" class="btn btn-outline-secondary text-light w-100 mt-1">Hollywood Movies</a>
-                    <a href="https://cinehubpro.free.nf" type="button" class="btn btn-outline-secondary text-light w-100 mt-1">Webseries</a>
-                </div>
-                
-                <!-- footer of sidebar -->
-                <div class="text-center w-100 mt-4">
-                    <div class="text-center w-100 px-2 flex justify-center items-center gap-2">
-                        <span class="font-bold bg-clip-text text-[18px] text-transparent bg-gradient-to-r from-yellow-400 via-orange-700 to-red-700">CINEHUBPRO</span>
-                    </div>
-                </div>
-            </div>
-            </div>
+<body>
+  <header class="site-nav">
+    <div class="nav-inner">
+      <button class="menu-button" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#siteMenu" aria-label="Open navigation">
+        <i class="bi bi-list"></i>
+      </button>
 
-            <!-- web title + Logo -->
-            <div class="container-fluid d-flex align-items-center">
-                <a class="navbar-brand text-light fw-bold d-flex align-items-center gap-2" href="https://cinehubpro.free.nf">
-                    <img src="https://kommodo.ai/i/m9vJY7xPYSMzhdFDF6MP" style="height: 38px; width: auto;" class="rounded" alt="Logo">
-                    <span class="bg-clip-text sm:text-[25px] text-[20px] text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
-                        CINEHUBPRO 
-                    </span>
-                </a>
-              </div>
-           </div>
-        </nav>
-    </header>
+      <a class="brand" href="https://cinehubpro.free.nf" aria-label="CineHubPro home">
+        <img src="https://kommodo.ai/i/m9vJY7xPYSMzhdFDF6MP" alt="CineHubPro">
+      </a>
 
-    <div class="bg-black text-light">
-        
-        <!-- TOP AD SLOT -->
-        <div class="justify-content-center align-items-center w-100 d-flex mt-3 px-2">
-            <div class="lg:w-9/12 w-full py-2 bg-dark border border-secondary rounded text-center text-secondary text-xs">
-                <!-- Paste Top Ad Code Here -->
-                Advertisement Space
-            </div>
-        </div>
+      <span class="nav-tag">STREAMING</span>
+    </div>
+  </header>
 
-        <!-- file Name -> to be displayed here -->
-        <div class="justify-content-center align-items-center w-100 d-flex mt-2">
-            <div id="file-name" class="text-center text-lg max:w-74 p-2 flex-wrap justify-center items-center">
-                <p class="fw-bold m-0"> 
-                    <span id="myDiv" class="h6 flex-wrap text-center justify-center items-center card-title wow animate__animated animate__fadeInRight">
-                        {{file_name}}
-                    </span>
-                </p>
-            </div>
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="siteMenu" aria-labelledby="siteMenuLabel">
+    <div class="offcanvas-header">
+      <div class="d-flex align-items-center gap-3">
+        <img class="side-logo" src="https://kommodo.ai/i/m9vJY7xPYSMzhdFDF6MP" alt="CineHubPro logo">
+        <div>
+          <h5 class="mb-1 fw-bold" id="siteMenuLabel">CINEHUBPRO</h5>
+          <small class="text-danger">Your streaming destination</small>
         </div>
-
-        <!-- Online Video Player -> to be displayed here (EXACT ORIGINAL WORKING SETUP) -->
-        <div class="justify-content-center align-items-center w-100 d-flex flex-wrap px-2">
-            <div class="lg:w-9/12 lg:px-12 lg:py-4 w-full border border-danger rounded-3 shadow-lg wow animate__animated animate__fadeInLeft">
-                <video id="player" class="player" playsinline controls>
-                    <source src="{{file_url}}" type="video/mp4">
-                </video>
-            </div>
-        </div>
-
-        <!-- BOTTOM AD SLOT -->
-        <div class="justify-content-center align-items-center w-100 d-flex mt-3 px-2">
-            <div class="lg:w-9/12 w-full py-2 bg-dark border border-secondary rounded text-center text-secondary text-xs">
-                <!-- Paste Bottom Ad Code Here -->
-                Advertisement Space
-            </div>
-        </div>
-
-        <!-- External video player section (EXACT ORIGINAL FUNCTIONS) -->
-        <div class="justify-content-center align-items-center w-100 d-flex">
-            <div class="row d-flex w-100 justify-content-center align-items-center">
-                <div class="col-lg-7 col-12 d-flex justify-content-start align-items-center">
-                    <p class="h4 px-2 mt-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-200 to-orange-600 font-bold mb-2">Play with...</p>
-                </div>
-                <div class="col-lg-6 col-10 d-flex justify-center items-center flex-wrap pb-3 gap-2 wow animate__animated animate__fadeIn">
-                    <div onclick="vlc_player()" class="card card-body col-lg-3 col-5 bg-dark border border-secondary text-light text-center justify-content-center align-items-center hover:shadow-md hover:shadow-pink-500 hover:translate-y-[-5px] transition duration-300 cursor-pointer">
-                        <svg class="wow animate__animated animate__shakeX animate__delay-1s mb-1" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 64 64"><path fill="#ff8800" d="M32,8L12,52h40L32,8z"/></svg>
-                        VLC Player
-                    </div>
-                    <div onclick="mx_player()" class="card card-body col-lg-3 col-5 bg-dark border border-secondary text-light text-center justify-content-center align-items-center hover:shadow-md hover:shadow-pink-500 hover:translate-y-[-5px] transition duration-300 cursor-pointer">
-                        <svg class="wow animate__animated animate__shakeX animate__delay-2s mb-1" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 64 64"><circle cx="32" cy="32" r="26" fill="#1a6dff"/><polygon points="26,20 26,44 45,32" fill="#fff"/></svg>
-                        Mx Player
-                    </div>
-                    <div onclick="playit_player()" class="card card-body col-lg-3 col-5 bg-dark border border-secondary text-light text-center justify-content-center align-items-center hover:shadow-md hover:shadow-pink-500 hover:translate-y-[-5px] transition duration-300 cursor-pointer">
-                        <svg class="wow animate__animated animate__shakeX animate__delay-1s mb-1" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="#22abbd"/><polygon points="20,15 20,33 34,24" fill="#fff"/></svg>
-                        Play-it
-                    </div>
-                    <div onclick="km_player()" class="card card-body col-lg-3 col-5 bg-dark border border-secondary text-light text-center justify-content-center align-items-center hover:shadow-md hover:shadow-pink-500 hover:translate-y-[-5px] transition duration-300 cursor-pointer">
-                        <svg class="wow animate__animated animate__shakeX animate__delay-2s mb-1" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 64 64"><circle cx="32" cy="32" r="26" fill="#c822ff"/><polygon points="26,20 26,44 45,32" fill="#fff"/></svg>
-                        KM Player
-                    </div>
-                    <div onclick="s_player()" class="card card-body col-lg-3 col-5 bg-dark border border-secondary text-light text-center justify-content-center align-items-center hover:shadow-md hover:shadow-pink-500 hover:translate-y-[-5px] transition duration-300 cursor-pointer">
-                        <svg class="wow animate__animated animate__shakeX animate__delay-3s mb-1" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 64 64"><polygon points="15,10 15,54 54,32" fill="#6dc7ff"/></svg>
-                        S Player
-                    </div>
-                    <div onclick="hd_player()" class="card card-body col-lg-3 col-5 bg-dark border border-secondary text-light text-center justify-content-center align-items-center hover:shadow-md hover:shadow-pink-500 hover:translate-y-[-5px] transition duration-300 cursor-pointer">
-                        <svg class="wow animate__animated animate__shakeX animate__delay-3s mb-1" xmlns="http://www.w3.org/2000/svg" height="45" width="45" viewBox="0 0 512 512"><circle cx="256" cy="256" r="240" fill="red"/><polygon fill="#FFF" points="187,146 187,355 382,251"/></svg>
-                        HD Player(4K)
-                    </div>
-                    <div onclick="lazyDownload()" class="col-lg-6 p-3 col-11 mt-2 rounded-3xl bg-gradient-to-r from-pink-600 to-violet-600 text-white fw-bold text-center align-items-center hover:shadow-md hover:shadow-gray-100 hover:translate-y-[-5px] transition duration-300 cursor-pointer wow animate__animated animate__rubberBand">
-                        Download Now
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="justify-content-center align-items-center w-100 d-flex mb-3 px-2">
-            <div class="row d-flex w-100 justify-content-center align-items-center">
-                <div class="col-lg-8 col-11 py-2 text-center bg-danger rounded-4 text-sm">
-                    Video not playing? Possibly because your browser or the player doesn't support codec, please download and watch.
-                </div>
-            </div>
-        </div>
-        <div class="justify-content-center align-items-center w-100 d-flex mb-3 px-2">
-            <div class="row d-flex w-100 justify-content-center align-items-center">
-                <div class="col-lg-5 col-11 py-2 text-center bg-success rounded-4 text-sm">
-                    If you find any broken links then please contact <a href="https://telegram.me/CineHubProsupport" class="text-[16px] font-bold underline">CINEHUBPRO</a>
-                </div>
-            </div>
-        </div>
+      </div>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
 
-    <footer class="bg-dark justify-content-around align-items-center border-top border-secondary pt-4">
-        <div class="container-fluid justify-content-center align-items-center">
-            <div class="row flex-row-reverse text-secondary justify-content-center align-items-center">
-                <div class="col-lg-6 col-12 justify-content-center align-items-center text-center p-1">
-                    <ul class="navbar-nav">
-                        <li class="navbar-item bg-gradient-to-r from-pink-500 rounded-xl p-2">
-                            <h5 class="text-gray-100 font-semibold text-sm">Think & just code it...</h5>
-                            <sup class="badge text-xs text-gray-300 font-monospace">-CINEHUBPRO</sup>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-6 col-12 justify-content-center align-items-center text-center p-1">
-                    <ul class="navbar-nav">
-                        <li class="navbar-item bg-gradient-to-l from-pink-500 rounded-xl p-2">
-                            <h5 class="text-gray-100 font-semibold text-sm">Success is the journey of millions of failure and lots of hard work</h5>
-                            <sup class="badge text-xs text-gray-300 font-monospace">CINEHUBPRO</sup>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-4 col-8 justify-content-center align-items-center text-center my-3">
-                    <ul class="navbar-nav">
-                        <li class="nav-item justify-center items-center flex">
-                            <!-- Footer Wide Logo -->
-                            <img src="https://kommodo.ai/i/m9vJY7xPYSMzhdFDF6MP" style="max-width: 240px; height: auto;" class="rounded-3 shadow" alt="logo">
-                        </li>
-                    </ul>
-                </div>
-            </div> 
-        </div>
-        <hr class="border-secondary">
-        <div class="text-center text-xs p-3 text-light" style="background-color: rgba(0, 0, 0, 0.2);">
-            © <script type="text/JavaScript">document.write(new Date().getFullYear())</script> Copyright :
-            <a class="bg-clip-text text-[16px] text-transparent bg-gradient-to-r from-pink-500 to-violet-500 font-bold tracking-wide px-1" href="https://t.me/movieupdatewithak01">CINEHUBPRO</a>
-            All right reserved
-        </div>   
-    </footer>
+    <div class="offcanvas-body">
+      <a class="side-link" href="https://cinehubpro.free.nf"><i class="bi bi-house me-2"></i>Home</a>
+      <a class="side-link" href="https://cinehubpro.free.nf"><i class="bi bi-fire me-2"></i>Trending Movies</a>
+      <a class="side-link" href="https://cinehubpro.free.nf"><i class="bi bi-stars me-2"></i>New Releases</a>
+      <a class="side-link" href="https://cinehubpro.free.nf"><i class="bi bi-collection-play me-2"></i>Web Series</a>
+      <a class="side-link" href="https://t.me/movieupdatewithak01" target="_blank" rel="noopener">
+        <i class="bi bi-telegram me-2"></i>Telegram Updates
+      </a>
+      <a class="side-link" href="https://t.me/CineHubProsupport" target="_blank" rel="noopener">
+        <i class="bi bi-headset me-2"></i>Support
+      </a>
+    </div>
+  </div>
 
-    <script>
-        new WOW().init();
-    </script>
-    <script>
-        var div = document.getElementById('myDiv');
-        var text = div.textContent;
-        if(text.length > 60){
-            div.textContent = text.slice(0, 60)+"....";
-        }
-    </script>
-    
-    <!-- Original Working Plyr Script -->
-    <script src="https://cdn.plyr.io/3.6.9/plyr.js"></script>
-    <script>
-        const controls = [
-            'play-large', 'rewind', 'play', 'fast-forward', 'progress', 
-            'current-time', 'duration', 'mute', 'volume', 'captions', 
-            'settings', 'pip', 'airplay', 'download', 'fullscreen'
-        ];
-        document.addEventListener('DOMContentLoaded', () => {
-            const player = Plyr.setup('.player', { controls });
-        });
-    </script>
+  <main class="page-wrap">
+    <section class="movie-heading">
+      <div class="eyebrow">Now Streaming</div>
+      <h1 class="movie-title" id="myDiv">{{file_name}}</h1>
+    </section>
 
-    <!-- Disabling right click -->
-    <script>
-        document.addEventListener("contextmenu", function (e) {
-            e.preventDefault();
-        });
-        document.addEventListener('keydown', function (e) {
-            if (
-                e.key === 'F12' ||
-                (e.ctrlKey && e.shiftKey && e.key === 'I') ||
-                (e.ctrlKey && e.key === 'u') ||
-                e.ctrlKey || e.shiftKey || e.altKey
-            ) {
-                e.preventDefault();
-            }
-        });
-    </script>
-    
-    <!-- Original Working Player Links -->
-    <script>
-        const videolink = window.location.href;
-        const lazyLink = videolink.replace("/watch/", "/");
+    <section class="player-shell" aria-label="Video player">
+      <video id="player" playsinline controls>
+        <source src="{{file_url}}" type="video/mp4">
+      </video>
+    </section>
 
-        function vlc_player() {
-            const openLazyLink = lazyLink;
-            const openVlc = `vlc://${openLazyLink}`;
-            window.location.href = openVlc;
-        }
-        function mx_player() {
-            const openLazyLink = lazyLink;
-            const openMx = `intent:${openLazyLink}#Intent;package=com.mxtech.videoplayer.ad;end`;
-            window.location.href = openMx;
-        }
-        function playit_player() {
-            const openLazyLink = lazyLink;
-            const openPlayit = `playit://playerv2/video?url=${openLazyLink}`;
-            window.location.href = openPlayit;
-        }
-        function s_player() {
-            const openLazyLink = lazyLink;
-            const openSplayer = `intent:${openLazyLink}#Intent;action=com.young.simple.player.playback_online;package=com.young.simple.player;end`;
-            window.location.href = openSplayer;
-        }
-        function km_player() {
-            const openLazyLink = lazyLink;
-            const openKmplayer = `intent:${openLazyLink}#Intent;package=com.kmplayer;end`;
-            window.location.href = openKmplayer;
-        }
-        function hd_player() {
-            const openLazyLink = lazyLink;
-            const openHDplayer = `intent:${openLazyLink}#Intent;package=uplayer.video.player;end`;
-            window.location.href = openHDplayer;
-        }
-        function lazyDownload() {
-            const openLazyLink = lazyLink;
-            window.location.href = openLazyLink;
-        }
-    </script>
+    <section aria-labelledby="externalPlayersTitle">
+      <h2 class="section-heading" id="externalPlayersTitle">Choose Your Player</h2>
+
+      <div class="player-grid">
+        <button class="player-option" type="button" onclick="vlc_player()">
+          <i class="bi bi-play-circle"></i><span>VLC Player</span>
+        </button>
+        <button class="player-option" type="button" onclick="mx_player()">
+          <i class="bi bi-play-btn"></i><span>MX Player</span>
+        </button>
+        <button class="player-option" type="button" onclick="playit_player()">
+          <i class="bi bi-film"></i><span>Playit</span>
+        </button>
+        <button class="player-option" type="button" onclick="km_player()">
+          <i class="bi bi-play-fill"></i><span>KM Player</span>
+        </button>
+        <button class="player-option" type="button" onclick="s_player()">
+          <i class="bi bi-camera-video"></i><span>S Player</span>
+        </button>
+        <button class="player-option" type="button" onclick="hd_player()">
+          <i class="bi bi-badge-hd"></i><span>HD Player (4K)</span>
+        </button>
+        <button class="download-button" type="button" onclick="lazyDownload()">
+          <i class="bi bi-download me-2"></i>Download Now
+        </button>
+      </div>
+    </section>
+
+    <div class="notice">
+      <strong>Video not playing?</strong> Your browser or player may not support this video codec.
+      Try another player or download the video.
+    </div>
+
+    <div class="notice">
+      Found a broken link? Contact
+      <a href="https://t.me/CineHubProsupport" target="_blank" rel="noopener">CINEHUBPRO Support</a>.
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="social-links">
+      <a href="https://cinehubpro.free.nf" target="_blank" rel="noopener" aria-label="Website"><i class="bi bi-globe"></i></a>
+      <a href="https://t.me/movieupdatewithak01" target="_blank" rel="noopener" aria-label="Telegram updates"><i class="bi bi-telegram"></i></a>
+      <a href="https://t.me/CineHubProsupport" target="_blank" rel="noopener" aria-label="Support"><i class="bi bi-headset"></i></a>
+    </div>
+
+    <img class="footer-logo" src="https://kommodo.ai/i/m9vJY7xPYSMzhdFDF6MP" alt="CineHubPro">
+    <div class="footer-copy">
+      © <span id="year"></span> CINEHUBPRO. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+
+  <script>
+    const controls = [
+      'play-large', 'rewind', 'play', 'fast-forward',
+      'progress', 'current-time', 'duration', 'mute',
+      'volume', 'captions', 'settings', 'pip',
+      'airplay', 'download', 'fullscreen'
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.Plyr) {
+        new Plyr('#player', { controls });
+      }
+
+      const title = document.getElementById('myDiv');
+      if (title && title.textContent.trim().length > 120) {
+        title.textContent = title.textContent.trim().slice(0, 120) + '…';
+      }
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+    });
+
+    // Existing watch URL -> direct video URL conversion
+    const videolink = window.location.href;
+    const lazyLink = videolink.replace('/watch/', '/');
+
+    function vlc_player() {
+      window.location.href = `vlc://${lazyLink}`;
+    }
+
+    function mx_player() {
+      window.location.href = `intent:${lazyLink}#Intent;package=com.mxtech.videoplayer.ad;end`;
+    }
+
+    function playit_player() {
+      window.location.href = `playit://playerv2/video?url=${encodeURIComponent(lazyLink)}`;
+    }
+
+    function s_player() {
+      window.location.href = `intent:${lazyLink}#Intent;action=com.young.simple.player.playback_online;package=com.young.simple.player;end`;
+    }
+
+    function km_player() {
+      window.location.href = `intent:${lazyLink}#Intent;package=com.kmplayer;end`;
+    }
+
+    function hd_player() {
+      window.location.href = `intent:${lazyLink}#Intent;package=uplayer.video.player;end`;
+    }
+
+    function lazyDownload() {
+      window.location.href = lazyLink;
+    }
+  </script>
 </body>
 </html>
