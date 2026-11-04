@@ -100,19 +100,38 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10 text-center">
                 <!-- FILE NAME VARIABLE -->
-                <div class="glass-box p-4 mb-5 wow animate__animated animate__fadeInUp">
+                <div class="glass-box p-4 mb-4 wow animate__animated animate__fadeInUp">
                     <h4 class="fw-bold text-warning mb-0" id="myDiv">%s</h4>
                 </div>
 
-                <!-- DOWNLOAD BUTTON VARIABLES -->
-                <a href=%s class="text-decoration-none">
-                    <div class="btn-cinematic p-4 rounded-5 shadow-lg wow animate__animated animate__pulse animate__infinite fs-4 fw-bold">
-                        <i class="fa-solid fa-cloud-arrow-down mb-2 fs-1 d-block"></i>
-                        Download Now
-                        <span aria-hidden class="d-none">_404 Error</span>
-                        <span aria-hidden class="d-none">_%s</span>
+                <!-- AD & TIMER SECTION -->
+                <div id="ad-section" class="glass-box p-4 mb-5 wow animate__animated animate__zoomIn">
+                    <h5 class="fw-bold text-light mb-2">Generating Download Link...</h5>
+                    <p id="timer-text" class="text-secondary mb-3">Please wait <span id="timer" class="text-danger fw-bold fs-3">10</span> seconds</p>
+                    
+                    <!-- Adsterra 300x250 Ad Frame -->
+                    <div style="width:300px; height:250px; background:#111; margin:0 auto; border-radius:8px; overflow:hidden; box-shadow: 0 0 15px rgba(229,9,20,0.3);">
+                        <script>atOptions = { 'key' : '20e95dc83ed71a14daf51dd4a5761fe4', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };</script>
+                        <script src="https://bancadeltempoidea.org/22/20e95dc83ed71a14daf51dd4a5761fe4"></script>
                     </div>
-                </a>
+                    
+                    <!-- Skip Button (Initially Hidden) -->
+                    <button id="skip-btn" class="btn btn-outline-warning mt-4 fw-bold px-4 py-2" style="display:none; border-radius:25px; transition:0.3s;">
+                        Skip Ad & Get Link <i class="fa-solid fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+
+                <!-- DOWNLOAD BUTTON VARIABLES (Hidden until Ad is Skipped) -->
+                <div id="real-dl-section" style="display: none;" class="wow animate__animated animate__bounceIn">
+                    <a href=%s class="text-decoration-none">
+                        <div class="btn-cinematic p-4 rounded-5 shadow-lg wow animate__animated animate__pulse animate__infinite fs-4 fw-bold">
+                            <i class="fa-solid fa-cloud-arrow-down mb-2 fs-1 d-block"></i>
+                            Download Now
+                            <span aria-hidden class="d-none">_404 Error</span>
+                            <span aria-hidden class="d-none">_%s</span>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -134,9 +153,35 @@
     <!-- Scripts -->
     <script>new WOW().init();</script>
     <script>
+        // Filename Truncate Logic
         var div = document.getElementById('myDiv');
         var text = div.textContent;
         if(text.length > 60){ div.textContent = text.slice(0, 60)+"...."; }
+
+        // Ad Timer & Skip Logic
+        document.addEventListener("DOMContentLoaded", function() {
+            let timeLeft = 10;
+            const timerElem = document.getElementById('timer');
+            const timerText = document.getElementById('timer-text');
+            const skipBtn = document.getElementById('skip-btn');
+            const adSection = document.getElementById('ad-section');
+            const realDlSection = document.getElementById('real-dl-section');
+
+            let countdown = setInterval(function() {
+                timeLeft--;
+                timerElem.textContent = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    timerText.innerHTML = "<span class='text-success fw-bold fs-5'>Your Link is Ready!</span>";
+                    skipBtn.style.display = 'inline-block';
+                }
+            }, 1000);
+
+            skipBtn.addEventListener('click', function() {
+                adSection.style.display = 'none';
+                realDlSection.style.display = 'block';
+            });
+        });
     </script>
 </body>
 </html>
