@@ -6,17 +6,19 @@
     <meta property="og:image" content="https://kommodo.ai/i/m9vJY7xPYSMzhdFDF6MP" itemprop="thumbnailUrl">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Backend Title Variable Maintained -->
     <title>%s | CINEHUBPRO STREAMING</title>
     
-    <!-- CSS & Libraries -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway|Delius">
-    
-    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type='text/css' href="https://drive----google.com/uc?export=view&id=1pVLG4gZy7jdow3sO-wFS06aP_A9QX0O6">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Delius">
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.9/plyr.css" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -34,7 +36,7 @@
             
             <!-- Web Title -->
             <div class="ms-4">
-                <a class="navbar-brand text-light fw-bold" href="https://cinehubpro.free.nf">
+                <a class="navbar-brand text-light fw-bold" href="https://t.me/Movieupdatewithak01">
                     <span class="bg-clip-text sm:text-[25px] text-[22px] text-transparent bg-gradient-to-r from-pink-500 to-violet-500 drop-shadow-md">
                         CINEHUBPRO 
                     </span>
@@ -84,8 +86,7 @@
         </div>
     </header>
 
-    <!-- Main Content Area -->
-    <main class="flex-grow container mx-auto px-4 py-8 flex flex-col justify-center items-center">
+    <main class="flex-grow flex flex-col justify-center items-center w-full px-4 py-8">
         
         <!-- TOP AD BANNER SLOT -->
         <div class="w-full flex justify-center mb-6 wow animate__animated animate__fadeInDown">
@@ -95,21 +96,21 @@
             </div>
         </div>
 
-        <!-- File Name Box -->
+        <!-- File Name (Backend Variable %s Maintained) -->
         <div class="flex justify-center w-full mb-8">
             <div id="file-name" class="text-center p-3 rounded-lg bg-zinc-900 border border-zinc-800 shadow-md min-w-[300px]">
-                <p class="font-bold m-0 text-gray-200 wow animate__animated animate__fadeInRight"> 
-                    <span id="myDiv" class="text-lg">
+                <p class="font-bold m-0 text-gray-200"> 
+                    <span id="myDiv" class="text-lg wow animate__animated animate__fadeInRight">
                         %s
                     </span>
                 </p>
             </div>
         </div>
 
-        <!-- Download / Fallback Action Button -->
-        <div class="w-full flex justify-center items-center mb-10 wow animate__animated animate__zoomIn">
+        <!-- Download Button (Backend Variable %s Maintained) -->
+        <div class="container flex justify-center items-center pb-8">
             <a class="w-full max-w-md flex justify-center items-center no-underline" href="%s">
-                <div class="w-full py-4 px-6 rounded-2xl bg-zinc-900 border border-pink-500/50 shadow-[0_0_15px_rgba(236,72,153,0.3)] text-white text-center hover:bg-gradient-to-r hover:from-pink-600 hover:to-violet-600 hover:shadow-[0_0_25px_rgba(236,72,153,0.6)] hover:-translate-y-1 transition-all duration-300 group">
+                <div class="w-full py-4 px-6 rounded-2xl bg-zinc-900 border border-pink-500/50 shadow-[0_0_15px_rgba(236,72,153,0.3)] text-white text-center hover:bg-gradient-to-r hover:from-pink-600 hover:to-violet-600 hover:shadow-[0_0_25px_rgba(236,72,153,0.6)] hover:-translate-y-1 transition-all duration-300 wow animate__animated animate__rubberBand group">
                     <i class="bi bi-cloud-arrow-down-fill text-4xl mb-2 block group-hover:animate-bounce"></i>
                     <span class="font-bold text-xl tracking-wide">Download</span>
                     <div class="text-xs text-gray-400 mt-2 opacity-70 group-hover:text-white">
@@ -122,56 +123,88 @@
         </div>
 
         <!-- BOTTOM AD BANNER SLOT -->
-        <div class="w-full flex justify-center mb-6 wow animate__animated animate__fadeInUp">
+        <div class="w-full flex justify-center mt-4 mb-6 wow animate__animated animate__fadeInUp">
             <div class="bg-zinc-800 border border-zinc-700 w-[728px] max-w-full h-[90px] flex items-center justify-center rounded-lg shadow-lg text-zinc-500 text-sm">
                 <!-- Drop your Bottom Ad Script Here -->
                 [ Advertisement Space 728x90 ]
             </div>
         </div>
+        
     </main>
     
-    <!-- Footer -->
     <footer class="bg-zinc-900 border-t border-zinc-800 pt-8 pb-4 mt-auto">
-        <div class="container mx-auto text-center px-4">
-            <!-- Social Icons -->
-            <div class="flex justify-center gap-4 mb-6">
-                <a href="https://t.me/movieupdatewithak01" target="_blank" class="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center text-blue-400 hover:bg-blue-500 hover:text-white transition-all duration-300 shadow-lg">
-                    <i class="bi bi-telegram text-xl"></i>
-                </a>
-                <a href="https://cinehubpro.free.nf" target="_blank" class="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center text-pink-500 hover:bg-pink-500 hover:text-white transition-all duration-300 shadow-lg">
-                    <i class="bi bi-globe text-xl"></i>
-                </a>
-                <a href="https://t.me/CineHubProsupport" target="_blank" class="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center text-violet-400 hover:bg-violet-500 hover:text-white transition-all duration-300 shadow-lg">
-                    <i class="bi bi-headset text-xl"></i>
-                </a>
-            </div>
-            
-            <p class="text-sm text-zinc-500">
-                © <script>document.write(new Date().getFullYear())</script> 
-                <span class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-violet-500">CINEHUBPRO</span>. All rights reserved.
-            </p>
+        <div class="container-fluid justify-content-center align-items-center">
+            <!-- For creatorrio // credit --- Please don't remove footer credit -->
+            <div class="row flex-row-reverse text-secondary justify-content-center align-items-center mb-4">
+                <div class="col-lg-6 col-12 justify-content-center align-items-center text-center p-1 wow animate__animated animate__fadeInRight">
+                    <ul class="navbar-nav">
+                        <li class="navbar-item bg-zinc-800 rounded-xl p-2 border border-zinc-700"> 
+                            <h5 class="text-gray-200 font-semibold text-sm"> Think & just enjoy it... </h5>
+                            <sup class="text-xs text-pink-500 font-monospace">CINEHUBPRO</sup> 
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 col-12 justify-content-center align-items-center text-center p-1 wow animate__animated animate__fadeInLeft">
+                    <ul class="navbar-nav">
+                        <li class="navbar-item bg-zinc-800 rounded-xl p-2 border border-zinc-700"> 
+                            <h5 class="text-gray-200 font-semibold text-sm"> Success is the journey of millions of failure and lots of hard work </h5> 
+                            <sup class="text-xs text-pink-500 font-monospace">CINEHUBPRO</sup> 
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-4 justify-content-center align-items-center text-center mt-4 wow animate__animated animate__fadeInUp">
+                    <ul class="navbar-nav">
+                        <li class="nav-item flex justify-center items-center">
+                            <img src="https://kommodo.ai/i/m9vJY7xPYSMzhdFDF6MP" height="120px" class="rounded-3 shadow-lg" alt="logo">
+                        </li>
+                    </ul>
+                </div>
+            </div> 
         </div>
+        
+        <div class="text-center text-xs p-3 text-gray-400 bg-black/40 border-t border-zinc-800">
+            © <script type="text/JavaScript">document.write(new Date().getFullYear())</script> Copyright:
+            <a class="bg-clip-text text-[16px] text-transparent bg-gradient-to-r from-pink-500 to-violet-500 font-bold tracking-wide px-1 hover:underline" href="https://telegram.me/Movieupdatewithak01">CineHubProsupport</a>
+            All rights reserved.
+        </div>   
     </footer>
 
-    <!-- Scripts -->
+    <!-- Plyr & Custom Scripts (Maintained exactly as original to prevent backend breakage) -->
+    <script src="https://cdn.plyr.io/3.6.12/plyr.js"></script>
+    <script>
+        const controls = [
+              'play-large',
+              'rewind',
+              'play', 
+              'fast-forward', 
+              'progress', 
+              'current-time',
+              'duration',
+              'mute',
+              'volume',
+              'captions',
+              'settings',
+              'pip',
+              'airplay',
+              'download',
+              'fullscreen'
+            ];
+        document.addEventListener('DOMContentLoaded', () => {
+            const player = Plyr.setup('.player', { controls });
+        });
+    </script>
+    <script src="js/wow.min.js"></script>
     <script>
         new WOW().init();
-
-        // Truncate long file names
-        const div = document.getElementById('myDiv');
-        if (div && div.textContent.length > 65) {
-            div.textContent = div.textContent.trim().slice(0, 65) + "....";
-        }
     </script>
-
-    <!-- Security (Disable Right Click / Inspect) -->
     <script>
-        document.addEventListener("contextmenu", e => e.preventDefault());
-        document.addEventListener('keydown', e => {
-            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.key === 'u')) {
-                e.preventDefault();
+        var div = document.getElementById('myDiv');
+        if(div) {
+            var text = div.textContent;
+            if(text.length > 60){
+                div.textContent = text.slice(0, 60)+"....";
             }
-        });
+        }
     </script>
 </body>
 </html>
