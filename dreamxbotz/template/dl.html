@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="https://kommodo.ai/i/m9vJY7xPYSMzhdFDF6MP" type="image/x-icon">
-    <meta property="og:image" content="https://kommodo.ai/i/m9vJY7xPYSMzhdFDF6MP" itemprop="thumbnailUrl">
+    <link rel="shortcut icon" href="519370.png" type="image/x-icon">
+    <meta property="og:image" content="519370.png" itemprop="thumbnailUrl">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Backend Title Variable Maintained -->
     <title>%s | CINEHUBPRO STREAMING</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -35,8 +34,9 @@
             </button>
             
             <!-- Web Title -->
-            <div class="ms-4">
-                <a class="navbar-brand text-light fw-bold" href="https://t.me/Movieupdatewithak01">
+            <div class="ms-4 flex items-center">
+                <a class="navbar-brand text-light fw-bold flex items-center gap-2" href="https://t.me/Movieupdatewithak01">
+                    <img src="519370.png" class="h-10 w-auto object-contain hidden sm:block rounded" alt="Logo">
                     <span class="bg-clip-text sm:text-[25px] text-[22px] text-transparent bg-gradient-to-r from-pink-500 to-violet-500 drop-shadow-md">
                         CINEHUBPRO 
                     </span>
@@ -51,10 +51,10 @@
                 <div class="justify-content-end align-items-end d-flex">
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div class="d-flex align-items-center mb-3">
-                    <img src="https://kommodo.ai/i/m9vJY7xPYSMzhdFDF6MP" width="70" height="70" class="rounded shadow-[0_0_15px_rgba(0,0,0,0.8)]" alt="Logo">
-                    <div class="p-3">
-                        <h4 class="offcanvas-title font-bold text-white tracking-wide" style="text-shadow: 2px 2px 5px black;">CINEHUBPRO</h4>
+                <div class="d-flex flex-col items-center mb-3 text-center">
+                    <!-- Adjusted Logo for Sidebar -->
+                    <img src="519370.png" class="w-full max-w-[200px] h-auto rounded shadow-[0_0_15px_rgba(0,0,0,0.8)] mb-3" alt="Logo">
+                    <div>
                         <p class="text-pink-500 font-semibold text-sm animate-pulse">Streaming Pro</p>
                     </div>
                 </div>
@@ -96,7 +96,7 @@
             </div>
         </div>
 
-        <!-- File Name (Backend Variable %s Maintained) -->
+        <!-- File Name Box -->
         <div class="flex justify-center w-full mb-8">
             <div id="file-name" class="text-center p-3 rounded-lg bg-zinc-900 border border-zinc-800 shadow-md min-w-[300px]">
                 <p class="font-bold m-0 text-gray-200"> 
@@ -107,7 +107,7 @@
             </div>
         </div>
 
-        <!-- Download Button (Backend Variable %s Maintained) -->
+        <!-- Download Action Button -->
         <div class="container flex justify-center items-center pb-8">
             <a class="w-full max-w-md flex justify-center items-center no-underline" href="%s">
                 <div class="w-full py-4 px-6 rounded-2xl bg-zinc-900 border border-pink-500/50 shadow-[0_0_15px_rgba(236,72,153,0.3)] text-white text-center hover:bg-gradient-to-r hover:from-pink-600 hover:to-violet-600 hover:shadow-[0_0_25px_rgba(236,72,153,0.6)] hover:-translate-y-1 transition-all duration-300 wow animate__animated animate__rubberBand group">
@@ -134,7 +134,7 @@
     
     <footer class="bg-zinc-900 border-t border-zinc-800 pt-8 pb-4 mt-auto">
         <div class="container-fluid justify-content-center align-items-center">
-            <!-- For creatorrio // credit --- Please don't remove footer credit -->
+            
             <div class="row flex-row-reverse text-secondary justify-content-center align-items-center mb-4">
                 <div class="col-lg-6 col-12 justify-content-center align-items-center text-center p-1 wow animate__animated animate__fadeInRight">
                     <ul class="navbar-nav">
@@ -155,7 +155,8 @@
                 <div class="col-lg-2 col-4 justify-content-center align-items-center text-center mt-4 wow animate__animated animate__fadeInUp">
                     <ul class="navbar-nav">
                         <li class="nav-item flex justify-center items-center">
-                            <img src="https://kommodo.ai/i/m9vJY7xPYSMzhdFDF6MP" height="120px" class="rounded-3 shadow-lg" alt="logo">
+                            <!-- Adjusted Logo for Footer -->
+                            <img src="519370.png" class="w-full max-w-[250px] h-auto rounded-xl shadow-[0_0_15px_rgba(236,72,153,0.3)]" alt="logo">
                         </li>
                     </ul>
                 </div>
@@ -169,25 +170,13 @@
         </div>   
     </footer>
 
-    <!-- Plyr & Custom Scripts (Maintained exactly as original to prevent backend breakage) -->
+    <!-- Plyr & Custom Scripts -->
     <script src="https://cdn.plyr.io/3.6.12/plyr.js"></script>
     <script>
         const controls = [
-              'play-large',
-              'rewind',
-              'play', 
-              'fast-forward', 
-              'progress', 
-              'current-time',
-              'duration',
-              'mute',
-              'volume',
-              'captions',
-              'settings',
-              'pip',
-              'airplay',
-              'download',
-              'fullscreen'
+              'play-large', 'rewind', 'play', 'fast-forward', 'progress', 
+              'current-time', 'duration', 'mute', 'volume', 'captions',
+              'settings', 'pip', 'airplay', 'download', 'fullscreen'
             ];
         document.addEventListener('DOMContentLoaded', () => {
             const player = Plyr.setup('.player', { controls });
@@ -196,8 +185,6 @@
     <script src="js/wow.min.js"></script>
     <script>
         new WOW().init();
-    </script>
-    <script>
         var div = document.getElementById('myDiv');
         if(div) {
             var text = div.textContent;
