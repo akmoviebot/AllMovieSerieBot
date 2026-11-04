@@ -3,276 +3,313 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>{{file_name}} | CINEHUBPRO</title>
+    <title>{{file_name}} | CineHubPro Premium</title>
     
-    <!-- Share/SEO Meta Tags (Sirf aapka logo dikhega) -->
-    <meta property="og:title" content="Watch {{file_name}} | CINEHUBPRO">
-    <meta property="og:description" content="High-Speed Bufferless Stream & Direct Download.">
+    <!-- SEO & Social Sharing (Aapka Logo) -->
+    <meta property="og:title" content="Watch {{file_name}} in HD">
+    <meta property="og:description" content="High-Speed Bufferless Stream on CineHubPro.">
     <meta property="og:image" itemprop="image" content="https://i.ibb.co/qJyZWCv/20230629-081948-0000.png">
-    <meta property="og:type" content="website">
     <link rel="shortcut icon" href="https://i.ibb.co/qJyZWCv/20230629-081948-0000.png" type="image/x-icon">
     
-    <!-- Libraries (Working versions only) -->
+    <!-- Premium Libraries -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.9/plyr.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
 
     <style>
-        /* Ultra-Compact Premium Dark Aesthetic */
-        :root { --red: #e50914; --dark: #0a0a0c; --card: #121215; --text: #e0e0e0; --muted: #7a7a85; }
-        body { background: var(--dark); color: var(--text); font-family: 'Inter', -apple-system, sans-serif; overflow-x: hidden; }
+        /* === ULTRA PREMIUM ANDROID UI === */
+        :root { 
+            --red-main: #e50914; 
+            --bg-dark: #0a0a0c; 
+            --bg-card: #141419; 
+            --text-main: #ffffff; 
+            --text-muted: #8e8e93;
+            --plyr-color-main: #e50914; /* Player Theme */
+        }
+        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Segoe UI', system-ui, sans-serif; overflow-x: hidden; margin: 0; }
         
-        /* Compact Header */
-        .header { background: rgba(10,10,12,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(229,9,20,0.2); position: sticky; top: 0; z-index: 999; display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; }
-        .logo-text { font-size: 1.2rem; font-weight: 900; margin: 0; color: #fff; }
-        .logo-text span { color: var(--red); }
-        .head-btns { display: flex; gap: 8px; }
-        .btn-tiny { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; font-size: 0.7rem; padding: 4px 8px; border-radius: 4px; text-decoration: none; }
-        
-        /* Live Info Bar */
-        .live-bar { font-size: 0.65rem; color: var(--muted); display: flex; justify-content: space-between; padding: 6px 12px; background: var(--card); border-bottom: 1px solid rgba(255,255,255,0.02); }
-        .live-pulse { color: #00e676; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+        /* Modern Header */
+        .app-header { background: rgba(10, 10, 12, 0.95); backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 1000; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(229,9,20,0.2); box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .brand-box { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .brand-box img { width: 36px; height: 36px; border-radius: 8px; box-shadow: 0 2px 8px rgba(229,9,20,0.5); }
+        .brand-text { font-size: 1.3rem; font-weight: 900; color: #fff; margin: 0; }
+        .brand-text span { color: var(--red-main); }
+        .head-action { display: flex; gap: 8px; }
+        .head-btn { background: rgba(255,255,255,0.08); color: #fff; font-size: 0.75rem; font-weight: 600; padding: 6px 12px; border-radius: 20px; text-decoration: none; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 5px; transition: 0.3s; }
+        .head-btn:hover { background: var(--red-main); border-color: var(--red-main); }
 
-        /* Meta Title & Tags */
-        .meta-section { padding: 10px 12px 5px; }
-        .video-title { font-size: 0.95rem; font-weight: 700; color: #ffeb3b; margin-bottom: 6px; line-height: 1.3; }
-        .tags-wrapper { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
-        .t-badge { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; font-size: 0.6rem; padding: 2px 5px; border-radius: 3px; font-weight: 600; }
-        .t-badge.red { border-color: var(--red); color: var(--red); background: rgba(229,9,20,0.1); }
-        .t-badge.gold { background: linear-gradient(90deg, #d4af37, #ffdf00); color: #000; border: none; }
+        /* Meta Title & Badges */
+        .meta-container { padding: 15px; background: linear-gradient(to bottom, rgba(229,9,20,0.05), transparent); }
+        .vid-title { font-size: 1.1rem; font-weight: 800; color: #fff; margin-bottom: 10px; line-height: 1.4; }
+        .badge-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .badge-item { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; color: var(--text-muted); display: flex; align-items: center; gap: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        .badge-item.imdb { background: rgba(255, 193, 7, 0.1); border-color: #ffc107; color: #ffc107; }
+        .badge-item.audio { background: rgba(229,9,20,0.1); border-color: var(--red-main); color: var(--red-main); }
 
-        /* PLAYER WRAPPER - 16:9 LOCKED */
-        .player-container { position: relative; width: 100%; aspect-ratio: 16/9; background: #000; border-top: 1px solid var(--red); border-bottom: 1px solid var(--red); box-shadow: 0 4px 15px rgba(229,9,20,0.15); margin-bottom: 10px; }
+        /* ========================================= */
+        /* PERFECT 16:9 PLAYER WITH YOUTUBE STYLE AD */
+        /* ========================================= */
+        .player-wrapper { position: relative; width: 100%; aspect-ratio: 16/9; background: #000; box-shadow: 0 10px 30px rgba(0,0,0,0.9); }
         .plyr { width: 100%; height: 100%; }
         
-        /* AD OVERLAY (Compact & YouTube Style) */
-        .ad-layer { position: absolute; inset: 0; background: rgba(0,0,0,0.95); z-index: 50; display: none; flex-direction: column; align-items: center; justify-content: center; }
-        .ad-sponsor { position: absolute; top: 10px; left: 10px; background: rgba(255,215,0,0.2); color: #ffd700; font-size: 0.65rem; padding: 2px 6px; border: 1px solid #ffd700; border-radius: 3px; }
-        .ad-countdown { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.6); color: #fff; font-size: 0.7rem; padding: 4px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); }
-        .ad-skip-btn { position: absolute; bottom: 15px; right: 15px; background: rgba(229,9,20,0.9); color: #fff; font-size: 0.8rem; font-weight: 600; padding: 6px 15px; border: 1px solid #fff; border-radius: 4px; cursor: pointer; display: none; z-index: 51; }
-        .ad-frame-box { width: 300px; height: 250px; background: #111; overflow: hidden; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.8); }
+        /* YouTube Style Pre-Roll Ad Overlay */
+        .yt-ad-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.98); z-index: 50; display: none; flex-direction: column; align-items: center; justify-content: center; }
+        .ad-top-bar { position: absolute; top: 0; left: 0; width: 100%; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); }
+        .sponsor-tag { background: #ffc107; color: #000; font-size: 0.65rem; font-weight: 800; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+        .timer-box { background: rgba(0,0,0,0.6); color: #fff; border: 1px solid rgba(255,255,255,0.3); font-size: 0.8rem; padding: 5px 12px; border-radius: 20px; backdrop-filter: blur(5px); }
+        
+        /* YouTube Style Skip Button */
+        .skip-btn-yt { position: absolute; bottom: 20px; right: 20px; background: rgba(255,255,255,0.9); color: #000; font-size: 0.9rem; font-weight: 700; padding: 8px 20px; border-radius: 4px; border: none; cursor: pointer; display: none; box-shadow: 0 4px 10px rgba(0,0,0,0.5); z-index: 51; transition: 0.2s; display: flex; align-items: center; gap: 6px; }
+        .skip-btn-yt:active { transform: scale(0.95); background: var(--red-main); color: #fff; }
 
-        /* Compact Action Buttons */
-        .action-row { display: flex; gap: 6px; padding: 5px 12px; overflow-x: auto; scroll-behavior: smooth; }
-        .action-row::-webkit-scrollbar { display: none; }
-        .act-btn { flex: 0 0 auto; background: var(--card); border: 1px solid rgba(255,255,255,0.05); color: #fff; font-size: 0.75rem; padding: 6px 12px; border-radius: 6px; display: flex; align-items: center; gap: 5px; }
-        .act-btn:active { background: rgba(229,9,20,0.2); border-color: var(--red); color: var(--red); }
+        /* The 300x250 Adsterra iframe box */
+        .ad-iframe-box { width: 300px; height: 250px; background: #111; border-radius: 8px; overflow: hidden; box-shadow: 0 0 20px rgba(229,9,20,0.4); }
 
-        /* Download Banner (Compact but prominent) */
-        .dl-banner { margin: 10px 12px; background: linear-gradient(90deg, #500, var(--red)); border-radius: 8px; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #ff4d4d; box-shadow: 0 2px 10px rgba(229,9,20,0.2); cursor: pointer; }
-        .dl-banner h6 { margin: 0; font-size: 0.9rem; font-weight: 700; color: #fff; }
-        .dl-banner p { margin: 0; font-size: 0.65rem; color: rgba(255,255,255,0.8); }
+        /* ========================================= */
+        /* CUSTOM PAUSE WATERMARK LOGO               */
+        /* ========================================= */
+        .pause-logo-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.4); z-index: 10; display: none; justify-content: center; align-items: center; pointer-events: none; }
+        .pause-logo-overlay img { width: 80px; height: 80px; opacity: 0.8; filter: drop-shadow(0 0 20px rgba(229,9,20,0.8)); animation: zoomIn 0.3s ease-out forwards; }
+        @keyframes zoomIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 0.8; } }
 
-        /* External Apps Grid */
-        .apps-title { font-size: 0.8rem; font-weight: 700; color: #00d2ff; text-transform: uppercase; margin: 15px 12px 10px; }
-        .apps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 0 12px; }
-        .app-btn { background: var(--card); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 10px 5px; text-align: center; display: flex; flex-direction: column; align-items: center; }
-        .app-btn svg, .app-btn img { width: 32px; height: 32px; margin-bottom: 4px; }
-        .app-btn span { font-size: 0.65rem; font-weight: 600; color: var(--text); }
+        /* Quick Action Tools (Scrollable Chips) */
+        .tools-row { display: flex; gap: 10px; padding: 15px; overflow-x: auto; scroll-behavior: smooth; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .tools-row::-webkit-scrollbar { display: none; }
+        .tool-chip { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.08); color: var(--text-main); font-size: 0.8rem; font-weight: 600; padding: 8px 16px; border-radius: 20px; display: flex; align-items: center; gap: 6px; white-space: nowrap; cursor: pointer; transition: 0.3s; }
+        .tool-chip i { color: var(--text-muted); font-size: 1rem; }
+        .tool-chip:active, .tool-chip.active { background: rgba(229,9,20,0.15); border-color: var(--red-main); color: var(--red-main); }
+        .tool-chip:active i, .tool-chip.active i { color: var(--red-main); }
 
-        /* Bottom Ad & Footer */
-        .bot-ad-box { text-align: center; margin: 15px 0; }
-        .footer { background: #000; padding: 15px; text-align: center; border-top: 1px solid var(--red); font-size: 0.7rem; color: var(--muted); }
+        /* Huge Download Call-to-Action */
+        .download-cta { margin: 15px; background: linear-gradient(135deg, var(--red-main), #8b0000); border-radius: 12px; padding: 16px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; box-shadow: 0 8px 20px rgba(229,9,20,0.3); border: 1px solid #ff4d4d; position: relative; overflow: hidden; }
+        .dl-text h5 { color: #fff; font-size: 1.1rem; font-weight: 800; margin: 0 0 5px 0; }
+        .dl-text p { color: rgba(255,255,255,0.8); font-size: 0.75rem; margin: 0; font-weight: 600; }
+        .dl-icon { background: rgba(0,0,0,0.3); width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #fff; font-size: 1.3rem; backdrop-filter: blur(5px); }
 
-        /* Download Modal overlay */
-        #dl-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 9999; display: none; flex-direction: column; justify-content: center; align-items: center; }
-        .dl-box { background: var(--card); border: 1px solid var(--red); padding: 15px; border-radius: 10px; width: 320px; text-align: center; }
+        /* External App Grid */
+        .section-title { font-size: 0.9rem; font-weight: 800; color: var(--text-muted); margin: 25px 15px 15px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; }
+        .section-title i { color: var(--red-main); }
+        
+        .apps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 0 15px; }
+        @media (max-width: 400px) { .apps-grid { grid-template-columns: repeat(3, 1fr); } }
+        
+        .app-card { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 15px 5px; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .app-card:active { transform: scale(0.95); border-color: var(--red-main); }
+        .app-card svg, .app-card img { width: 40px; height: 40px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5)); }
+        .app-card span { font-size: 0.7rem; font-weight: 700; color: var(--text-main); }
+
+        /* Randomized Website Media Scroll */
+        .website-feed-scroll { display: flex; gap: 12px; padding: 0 15px 20px; overflow-x: auto; scroll-behavior: smooth; }
+        .website-feed-scroll::-webkit-scrollbar { display: none; }
+        .feed-card { min-width: 130px; width: 130px; display: flex; flex-direction: column; gap: 8px; text-decoration: none; position: relative; }
+        .feed-poster { width: 100%; height: 180px; border-radius: 10px; object-fit: cover; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        .feed-tag { position: absolute; top: 6px; right: 6px; background: var(--red-main); color: #fff; font-size: 0.6rem; font-weight: 800; padding: 3px 6px; border-radius: 4px; z-index: 2; }
+        .feed-title { color: #fff; font-size: 0.8rem; font-weight: 700; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-height: 1.3; }
+
+        /* Download Modal (Ad + Timer) */
+        #download-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 9999; display: none; flex-direction: column; justify-content: center; align-items: center; backdrop-filter: blur(10px); }
+        .dl-modal-content { background: var(--bg-card); border: 1px solid var(--red-main); padding: 20px; border-radius: 15px; width: 320px; text-align: center; box-shadow: 0 0 40px rgba(229,9,20,0.4); }
+
+        .footer { text-align: center; padding: 20px; color: var(--text-muted); font-size: 0.75rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 20px; }
     </style>
 </head>
 <body>
 
-    <!-- Compact Header -->
-    <header class="header">
-        <a href="https://cinehubpro.free.nf" class="text-decoration-none d-flex align-items-center gap-2">
-            <i class="fa-solid fa-clapperboard text-danger fs-5"></i>
-            <h1 class="logo-text">CineHub<span>Pro</span></h1>
+    <!-- Professional App Header -->
+    <header class="app-header">
+        <a href="https://cinehubpro.free.nf" class="brand-box">
+            <img src="https://i.ibb.co/qJyZWCv/20230629-081948-0000.png" alt="Logo">
+            <h1 class="brand-text">CineHub<span>Pro</span></h1>
         </a>
-        <div class="head-btns">
-            <a href="https://cinehubpro.free.nf" class="btn-tiny"><i class="fa-solid fa-globe"></i> Site</a>
-            <a href="https://t.me/CineHubProsupport" class="btn-tiny"><i class="fa-solid fa-headset"></i> Help</a>
-            <a href="https://t.me/Movieupdatewithak01" class="btn-tiny border-danger text-danger"><i class="fa-brands fa-telegram"></i> VIP</a>
+        <div class="head-action">
+            <a href="https://cinehubpro.free.nf" class="head-btn"><i class="fa-solid fa-globe"></i> Site</a>
+            <a href="https://t.me/Movieupdatewithak01" class="head-btn" style="border-color: var(--red-main); color: var(--red-main);"><i class="fa-brands fa-telegram"></i> VIP</a>
         </div>
     </header>
 
-    <!-- Live Status Bar -->
-    <div class="live-bar">
-        <span id="live-date"><i class="fa-regular fa-clock"></i> Loading...</span>
-        <span><i class="fa-solid fa-circle live-pulse"></i> <span id="viewers">...</span> Watching</span>
-    </div>
-
-    <!-- Title & Tags -->
-    <div class="meta-section">
-        <div class="video-title" id="vidTitle">{{file_name}}</div>
-        <div class="tags-wrapper">
-            <span class="t-badge gold"><i class="fa-solid fa-star"></i> 8.5</span>
-            <span class="t-badge">4K HDR</span>
-            <span class="t-badge">WEB-DL</span>
-            <span class="t-badge red"><i class="fa-solid fa-language"></i> Multi-Audio</span>
+    <!-- Meta Info & Title -->
+    <div class="meta-container animate__animated animate__fadeInDown">
+        <h2 class="vid-title" id="vidTitle">{{file_name}}</h2>
+        <div class="badge-row">
+            <span class="badge-item imdb"><i class="fa-solid fa-star"></i> 8.9</span>
+            <span class="badge-item">4K HDR</span>
+            <span class="badge-item">WEB-DL</span>
+            <span class="badge-item audio"><i class="fa-solid fa-language"></i> Multi-Audio</span>
+            <span class="ms-auto text-success" style="font-size: 0.75rem; font-weight:700;"><i class="fa-solid fa-circle-dot fa-fade"></i> Live</span>
         </div>
     </div>
 
     <!-- ============================================== -->
-    <!-- EXACT WORKING VIDEO PLAYER WITH AD OVERLAY     -->
+    <!-- HIGH-SPEED VIDEO PLAYER ENGINE (ADVANCED UI)   -->
     <!-- ============================================== -->
-    <div class="player-container">
+    <div class="player-wrapper animate__animated animate__zoomIn">
         
-        <!-- Smart Ad Overlay (Handles Pre, Mid, Post) -->
-        <div id="player-ad-overlay" class="ad-layer">
-            <span class="ad-sponsor">Sponsored</span>
-            <span class="ad-countdown">Ad in <span id="ad-sec" class="text-warning fw-bold">5</span>s</span>
+        <!-- YOUTUBE STYLE 5 SEC PRE-ROLL AD -->
+        <div id="yt-ad-overlay" class="yt-ad-overlay">
+            <div class="ad-top-bar">
+                <span class="sponsor-tag">Sponsored</span>
+                <div class="timer-box" id="timer-box">Video starts in <span id="ad-sec" class="text-warning fw-bold fs-6">5</span>s</div>
+            </div>
             
-            <!-- 300x250 Adsterra Space -->
-            <div class="ad-frame-box">
+            <!-- Adsterra Ad Frame -->
+            <div class="ad-iframe-box">
                 <script>atOptions = { 'key' : '20e95dc83ed71a14daf51dd4a5761fe4', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };</script>
                 <script src="https://bancadeltempoidea.org/22/20e95dc83ed71a14daf51dd4a5761fe4"></script>
             </div>
             
-            <!-- Compact Skip Button -->
-            <button id="skip-btn" class="ad-skip-btn" onclick="skipAd()"><i class="fa-solid fa-forward-step"></i> Skip Ad</button>
+            <!-- Real Skip Button (Appears after 5s) -->
+            <button id="skip-btn" class="skip-btn-yt" onclick="skipAd()">
+                Skip Ad <i class="fa-solid fa-forward-step"></i>
+            </button>
         </div>
 
-        <!-- YOUR EXACT WORKING VIDEO TAG -->
-        <video id="player" class="player" playsinline controls>
+        <!-- PAUSE LOGO WATERMARK (Only shows when paused) -->
+        <div id="pause-logo" class="pause-logo-overlay">
+            <img src="https://i.ibb.co/qJyZWCv/20230629-081948-0000.png" alt="CineHubPro">
+        </div>
+
+        <!-- PLYR HTML5 VIDEO TAG (preload="auto" stops buffering) -->
+        <video id="player" playsinline controls preload="auto" crossorigin="anonymous">
+            <!-- FILE URL VARIABLE -->
             <source src="{{file_url}}" type="video/mp4">
         </video>
     </div>
 
-    <!-- Action Buttons -->
-    <div class="action-row">
-        <button class="act-btn" onclick="triggerAct(this, 'Liked!')"><i class="fa-regular fa-thumbs-up"></i> Like</button>
-        <button class="act-btn" onclick="showPopup('Audio', 'Hindi (Org) | English')"><i class="fa-solid fa-microphone"></i> Audio</button>
-        <button class="act-btn" onclick="showPopup('Quality', 'Auto 1080p | 720p')"><i class="fa-solid fa-gear"></i> Quality</button>
-        <button class="act-btn" onclick="shareLink()"><i class="fa-solid fa-share"></i> Share</button>
-    </div>
-
-    <!-- Download Banner (Triggers 10s Modal Ad) -->
-    <div class="dl-banner" onclick="startDownload()">
-        <div>
-            <h6><i class="fa-solid fa-cloud-arrow-down fa-bounce"></i> Download Original File</h6>
-            <p>High-Speed Direct Link</p>
+    <!-- Scrollable Action Tools -->
+    <div class="tools-row animate__animated animate__fadeInUp">
+        <div class="tool-chip" onclick="toggleBtn(this, 'Added to Liked Videos!')">
+            <i class="fa-regular fa-thumbs-up"></i> Like
         </div>
-        <i class="fa-solid fa-circle-arrow-right fs-4 text-white"></i>
+        <div class="tool-chip" onclick="showPopup('Audio Track', 'Hindi (Original) & English selected.')">
+            <i class="fa-solid fa-microphone-lines"></i> Audio
+        </div>
+        <div class="tool-chip" onclick="showPopup('Stream Quality', '1080p High-Speed Selected.')">
+            <i class="fa-solid fa-gear"></i> Quality
+        </div>
+        <div class="tool-chip" onclick="shareMedia()">
+            <i class="fa-solid fa-share-nodes"></i> Share
+        </div>
+        <div class="tool-chip" onclick="toggleBtn(this, 'Saved to Watchlist!')">
+            <i class="fa-solid fa-plus"></i> List
+        </div>
     </div>
 
-    <!-- External Apps -->
-    <div class="apps-title"><i class="fa-solid fa-rocket text-danger"></i> Or Play Externally</div>
-    <div class="apps-grid">
-        <!-- VLC -->
-        <div onclick="openApp('vlc')" class="app-btn">
+    <!-- Huge Download Action Banner -->
+    <div class="download-cta animate__animated animate__fadeInUp" onclick="startDownload()">
+        <div class="dl-text">
+            <h5>Download Original File</h5>
+            <p><i class="fa-solid fa-bolt text-warning"></i> High-Speed Direct Link (No Ads)</p>
+        </div>
+        <div class="dl-icon"><i class="fa-solid fa-download fa-bounce"></i></div>
+    </div>
+
+    <!-- Professional External App Grid -->
+    <div class="section-title animate__animated animate__fadeInUp"><i class="fa-solid fa-mobile-screen"></i> Play in External Apps</div>
+    <div class="apps-grid animate__animated animate__fadeInUp">
+        <div onclick="openApp('vlc')" class="app-card">
             <svg viewBox="0 0 64 64"><linearGradient id="vlc1" x1="32" x2="32" y1="16" y2="39" gradientUnits="userSpaceOnUse"><stop offset=".4" stop-color="#6dc7ff"></stop><stop offset="1" stop-color="#e6abff"></stop></linearGradient><path fill="url(#vlc1)" d="M32,31.25c2.891,0,5.255-0.323,6.939-0.712l2.409,7.664C37.765,39.116,33.881,39.25,32,39.25 c-1.88,0-5.765-0.134-9.347-1.049l2.408-7.663C26.745,30.927,29.11,31.25,32,31.25z M32.5,24.25c1.554,0,2.999-0.141,4.343-0.38 l-2.429-7.729c-0.587,0.063-1.211,0.109-1.914,0.109c-1.1,0-2.062-0.092-2.876-0.229l-2.404,7.651 C28.816,24.034,30.574,24.25,32.5,24.25z"></path><linearGradient id="vlc2" x1="32" x2="32" y1="7" y2="56" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1a6dff"></stop><stop offset="1" stop-color="#c822ff"></stop></linearGradient><path fill="url(#vlc2)" d="M56.9,50l-2.2-10.8c-0.5-2.3-2.5-3.8-4.9-3.8H45.1l-8.1-24.5 c-0.7-2.1-2.7-3.5-5-3.5c-2.3,0-4.3,1.4-5,3.5l-8.1,24.5h-4.5c-2.4,0-4.4,1.6-4.9,3.9L7.3,50c-0.3,1.4,0,2.9,0.9,4.1 C9.2,55.3,10.6,56,12.2,56h39.8c1.5,0,3-0.7,3.9-1.9C56.9,53,57.2,51.5,56.9,50z M19.1,41.2l9.8-29.6c0.4-1.3,1.7-2.2,3.1-2.2 s2.7,0.9,3.1,2.2l9.8,29.7c0.2,0.7,0.1,1.3-0.4,1.9c-1.5,2-6.3,3.2-12.6,3.2c0,0,0,0,0,0c-6.2,0-11-1.2-12.5-3.2 C19,42.6,18.9,41.9,19.1,41.2z M54.4,52.9C53.8,53.6,53,54,52,54H12.2c-0.9,0-1.8-0.4-2.4-1.1C9.4,52.3,9.2,51.7,9.2,51H17v-2H9.6 l0.4-2H14v-2h-3.6l1.1-5.3c0.3-1.3,1.5-2.3,2.9-2.3h3.8l-1.1,3.2c-0.4,1.4-0.2,2.7,0.7,3.8c1.9,2.5,7.1,4,14.1,4c0,0,0,0,0,0 c7.1,0,12.2-1.5,14.2-4c0.8-1.1,1.1-2.4,0.7-3.7c0,0,0,0,0,0l-1.1-3.2h4.1c1.4,0,2.6,1,2.9,2.3L53.8,45H50v2h4.2l0.4,2H47v2h8.1 C55,51.7,54.8,52.3,54.4,52.9z"></path></svg>
             <span>VLC</span>
         </div>
-        <!-- MX Player -->
-        <div onclick="openApp('mx')" class="app-btn">
+        <div onclick="openApp('mx')" class="app-card">
             <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="28" fill="#1b95e0"></circle><path fill="#fff" d="M42.5,31.134l-17-9.815c-0.667-0.385-1.5,0.096-1.5,0.866v19.63c0,0.77,0.833,1.251,1.5,0.866 l17-9.815C43.167,32.481,43.167,31.519,42.5,31.134z"></path></svg>
             <span>MX Player</span>
         </div>
-        <!-- PlayIt -->
-        <div onclick="openApp('playit')" class="app-btn">
+        <div onclick="openApp('playit')" class="app-card">
             <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#00e676"></circle><path fill="#fff" d="m33.2,22.5l-13.1-7.3c-.8-.5-1.8.1-1.8,1.1v14.5c0,1,1,1.5,1.8,1.1l13.1-7.3c.8-.5.8-1.7,0-2.1Z"/></svg>
             <span>PlayIt</span>
         </div>
-        <!-- HD Player -->
-        <div onclick="openApp('hd')" class="app-btn">
+        <div onclick="openApp('hd')" class="app-card">
             <svg viewBox="0 0 512 512"><path style="fill:#e50914;" d="M256,0.376C114.616,0.376,0,114.824,0,256s114.616,255.624,256,255.624S512,397.176,512,256S397.384,0.376,256,0.376z M184.496,146.928l195.624,104.44L184.496,355.8V146.928z"/><polygon style="fill:#FFFFFF;" points="187.368,146.928 187.368,355.8 382.992,251.368 "/></svg>
             <span>HD Player</span>
         </div>
-        <!-- KMPlayer -->
-        <div onclick="openApp('km')" class="app-btn">
+        <div onclick="openApp('km')" class="app-card">
             <svg viewBox="0 0 24 24" fill="#b388ff"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
             <span>KMPlayer</span>
         </div>
-        <!-- TV Cast -->
-        <div onclick="openApp('cast')" class="app-btn">
+        <div onclick="openApp('cast')" class="app-card">
             <svg viewBox="0 0 24 24" fill="#ffd600"><path d="M1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm18-7H5v1.63c3.96 1.28 7.09 4.41 8.37 8.37H19V7zM1 10v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11zm20-7H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
             <span>TV Cast</span>
         </div>
     </div>
 
-    <!-- Related Data -->
-    <div class="apps-title"><i class="fa-solid fa-fire text-warning"></i> Trending Now</div>
-    <div class="action-row" id="website-real-data" style="padding-bottom:15px;">
-        <span class="text-muted small ms-2">Fetching data...</span>
+    <!-- Random Dynamic Data From Website -->
+    <div class="section-title animate__animated animate__fadeInUp"><i class="fa-solid fa-fire text-warning"></i> Trending on CineHubPro</div>
+    <div class="website-feed-scroll animate__animated animate__fadeInUp" id="random-data">
+        <div class="text-center w-100 py-3"><div class="spinner-border text-danger spinner-border-sm"></div></div>
     </div>
 
-    <!-- Bottom Ads -->
-    <div class="bot-ad-box">
+    <!-- Bottom Display Ad -->
+    <div class="text-center mt-3 mb-2">
         <script>atOptions = { 'key' : '20e95dc83ed71a14daf51dd4a5761fe4', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };</script>
         <script src="https://bancadeltempoidea.org/22/20e95dc83ed71a14daf51dd4a5761fe4"></script>
     </div>
 
+    <!-- Minimal Footer -->
     <footer class="footer">
-        <div class="mb-2">
+        <div class="mb-3 text-center">
             <script>atOptions = { 'key' : 'b703ccaa774edf433ab8c9ec6fd6dff7', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };</script>
             <script src="https://bancadeltempoidea.org/22/b703ccaa774edf433ab8c9ec6fd6dff7"></script>
         </div>
-        © <script>document.write(new Date().getFullYear())</script> CineHubPro. All rights reserved.
+        &copy; <script>document.write(new Date().getFullYear())</script> CineHubPro Streaming. All rights reserved.
     </footer>
 
-    <!-- DOWNLOAD MODAL (10s Timer + Ad) -->
-    <div id="dl-modal">
-        <div class="dl-box">
-            <h6 class="text-white fw-bold mb-1">Generating Secure Link</h6>
-            <p class="text-muted small mb-2">Ready in <span id="dl-timer" class="text-danger fw-bold fs-5">10</span> seconds.</p>
-            <div style="width:300px; height:250px; background:#000; margin:0 auto; overflow:hidden; border-radius:5px;">
+    <!-- Download Modal Overlay (Timer + Ad) -->
+    <div id="download-modal">
+        <div class="dl-modal-content">
+            <h5 class="text-white fw-bold mb-1">Connecting to Server</h5>
+            <p class="text-muted small mb-3">Link ready in <span id="dl-timer" class="text-danger fw-bold fs-4">10</span>s</p>
+            <div style="width:300px; height:250px; background:#000; margin:0 auto; border-radius:8px; overflow:hidden;">
                 <script>atOptions = { 'key' : '20e95dc83ed71a14daf51dd4a5761fe4', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };</script>
                 <script src="https://bancadeltempoidea.org/22/20e95dc83ed71a14daf51dd4a5761fe4"></script>
             </div>
         </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
-    <script src="https://cdn.plyr.io/3.6.9/plyr.js"></script>
+    <!-- ============================================== -->
+    <!-- JAVASCRIPT & LOGIC ENGINE                      -->
+    <!-- ============================================== -->
     <script>
-        // --- LIVE DATA UPDATER ---
-        function updateTime() {
-            const now = new Date();
-            document.getElementById('live-date').innerHTML = `<i class="fa-regular fa-clock"></i> ${now.toLocaleDateString()} ${now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
-        }
-        setInterval(updateTime, 1000); updateTime();
-        document.getElementById('viewers').innerText = Math.floor(Math.random() * 800) + 120;
-
-        // --- TITLE TRUNCATER (Make it compact) ---
+        // --- TITLE TRUNCATE ---
         var titleElem = document.getElementById('vidTitle');
-        if(titleElem && titleElem.textContent.length > 40){ titleElem.textContent = titleElem.textContent.slice(0, 40)+"..."; }
+        if(titleElem && titleElem.textContent.length > 55){ titleElem.textContent = titleElem.textContent.slice(0, 55)+"..."; }
 
-        // --- EXACT WORKING PLYR ENGINE ---
-        const controls = ['play-large','rewind','play','fast-forward','progress','current-time','duration','mute','volume','captions','settings','pip','airplay','fullscreen'];
+        // --- PLYR ENGINE (All requested controls: Back, Next, Volume, Setting) ---
+        const playerControls = ['play-large','rewind','play','fast-forward','progress','current-time','duration','mute','volume','captions','settings','pip','fullscreen'];
         let playerInstance;
+        
         document.addEventListener('DOMContentLoaded', () => { 
-            const players = Plyr.setup('.player', { controls }); 
-            playerInstance = players[0];
-            initAdSystem(); // Start Ad Engine after player loads
+            playerInstance = new Plyr('#player', { controls: playerControls });
+            initSmartAdsAndPause();
         });
 
-        // --- 3 STAGE AD ENGINE (Pre, Mid, Post) ---
-        const adLayer = document.getElementById('player-ad-overlay');
-        const adSec = document.getElementById('ad-sec');
+        // --- YOUTUBE STYLE AD & PAUSE LOGO ENGINE ---
+        const adLayer = document.getElementById('yt-ad-overlay');
+        const adTimerText = document.getElementById('ad-sec');
+        const timerBox = document.getElementById('timer-box');
         const skipBtn = document.getElementById('skip-btn');
-        let midRollDone = false;
+        const pauseLogo = document.getElementById('pause-logo');
 
-        function runAd(durationSec, callback) {
+        function showPreRollAd() {
             adLayer.style.display = 'flex';
+            pauseLogo.style.display = 'none'; 
+            timerBox.style.display = 'block';
             skipBtn.style.display = 'none';
-            let t = durationSec;
-            adSec.textContent = t;
+            
+            let timeLeft = 5;
+            adTimerText.textContent = timeLeft;
             
             let interval = setInterval(() => {
-                t--;
-                adSec.textContent = t;
-                if(t <= 0) {
+                timeLeft--;
+                adTimerText.textContent = timeLeft;
+                if(timeLeft <= 0) {
                     clearInterval(interval);
-                    document.querySelector('.ad-countdown').style.display = 'none';
-                    skipBtn.style.display = 'block';
-                    skipBtn.onclick = () => {
-                        adLayer.style.display = 'none';
-                        if(callback) callback();
-                    };
+                    timerBox.style.display = 'none';
+                    skipBtn.style.display = 'flex';
                 }
             }, 1000);
         }
@@ -282,47 +319,39 @@
             if(playerInstance) playerInstance.play();
         }
 
-        function initAdSystem() {
-            // 1. Pre-Roll (Start: 5 sec)
-            runAd(5, () => { playerInstance.play(); });
+        function initSmartAdsAndPause() {
+            // 1. Trigger Pre-Roll 5s Ad instantly
+            showPreRollAd();
 
-            // 2. Mid-Roll (Trigger at 40% of video)
-            playerInstance.on('timeupdate', () => {
-                if(!midRollDone && playerInstance.duration > 0) {
-                    let percent = (playerInstance.currentTime / playerInstance.duration) * 100;
-                    if(percent >= 40) {
-                        midRollDone = true;
-                        playerInstance.pause();
-                        // 10 sec ad in middle
-                        runAd(10, () => { playerInstance.play(); });
-                    }
+            // 2. PAUSE LOGO FEATURE (Android Style)
+            playerInstance.on('pause', () => {
+                // If ad is not running, show the center logo
+                if(adLayer.style.display !== 'flex') {
+                    pauseLogo.style.display = 'flex';
                 }
             });
-
-            // 3. Post-Roll (End)
-            playerInstance.on('ended', () => {
-                runAd(5, null);
+            playerInstance.on('play', () => {
+                pauseLogo.style.display = 'none';
             });
         }
 
-        // --- DOWNLOAD TIMER ---
+        // --- DOWNLOAD TIMER LOGIC ---
         function startDownload() {
-            const mod = document.getElementById('dl-modal');
-            const txt = document.getElementById('dl-timer');
-            mod.style.display = 'flex';
-            let t = 10;
-            txt.textContent = t;
+            const modal = document.getElementById('download-modal');
+            const dltxt = document.getElementById('dl-timer');
+            modal.style.display = 'flex';
+            let t = 10; dltxt.textContent = t;
             let iv = setInterval(() => {
-                t--; txt.textContent = t;
+                t--; dltxt.textContent = t;
                 if(t <= 0) {
                     clearInterval(iv);
                     window.location.href = window.location.href.replace("/watch/", "/");
-                    setTimeout(() => mod.style.display = 'none', 1000);
+                    setTimeout(() => modal.style.display = 'none', 1000);
                 }
             }, 1000);
         }
 
-        // --- INTENT APPS ---
+        // --- INTENT APPS ENGINE ---
         function openApp(app) {
             const link = window.location.href.replace("/watch/", "/");
             let url = "";
@@ -335,42 +364,51 @@
             if(url) window.location.href = url;
         }
 
-        // --- UI & SHARE ---
-        function triggerAct(btn, msg) {
+        // --- UI BUTTONS & SHARE ---
+        function toggleBtn(btn, msg) {
             btn.classList.toggle('active');
             let icon = btn.querySelector('i');
             if(btn.classList.contains('active')) {
                 icon.classList.replace('fa-regular', 'fa-solid');
-                Swal.fire({toast:true, position:'top', title:msg, icon:'success', showConfirmButton:false, timer:1500, background:'#111', color:'#fff'});
+                Swal.fire({toast:true, position:'top', title:msg, icon:'success', showConfirmButton:false, timer:1500, background:'#141419', color:'#fff'});
             } else { icon.classList.replace('fa-solid', 'fa-regular'); }
         }
-        function showPopup(title, text) {
-            Swal.fire({toast:true, position:'top', title:title, text:text, showConfirmButton:false, timer:2000, background:'#111', color:'#fff'});
+        function showPopup(title, text) { 
+            Swal.fire({toast:true, position:'top', title:title, text:text, showConfirmButton:false, timer:2000, background:'#141419', color:'#fff'}); 
         }
-        function shareLink() {
-            if (navigator.share) navigator.share({ title: 'Watch HD on CineHubPro', url: window.location.href });
-            else { navigator.clipboard.writeText(window.location.href); showPopup('Success', 'Link Copied!'); }
+        function shareMedia() {
+            if (navigator.share) navigator.share({ title: 'Watch on CineHubPro', url: window.location.href });
+            else { navigator.clipboard.writeText(window.location.href); showPopup('Success', 'Link Copied to clipboard!'); }
         }
 
-        // --- REAL SITE DATA ---
-        async function loadSiteData() {
-            const box = document.getElementById('website-real-data');
+        // --- REAL WEBSITE MEDIA (Random Shuffle Logic) ---
+        async function fetchRandomData() {
+            const box = document.getElementById('random-data');
             try {
                 let res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent('https://cinehubpro.free.nf/feed')}`);
                 let data = await res.json();
-                if(data.items) {
+                if(data.items && data.items.length > 0) {
+                    // Shuffling Array to get new movies on every refresh
+                    let shuffled = data.items.sort(() => 0.5 - Math.random());
                     let html = '';
-                    data.items.slice(0, 5).forEach(item => {
+                    shuffled.slice(0, 5).forEach(item => {
                         let img = item.thumbnail || 'https://image.tmdb.org/t/p/w500/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg';
-                        html += `<a href="${item.link}" target="_blank" class="t-card"><span class="t-badge">HD</span><img src="${img}" class="t-poster"><div class="t-title">${item.title}</div></a>`;
+                        html += `
+                        <a href="${item.link}" target="_blank" class="feed-card">
+                            <span class="feed-tag">HD</span>
+                            <img src="${img}" class="feed-poster" onerror="this.src='https://image.tmdb.org/t/p/w500/rweIrveL43TaxUN0akQEaAXL6x0.jpg'">
+                            <div class="feed-title">${item.title}</div>
+                        </a>`;
                     });
                     box.innerHTML = html;
                 }
-            } catch(e) { box.innerHTML = '<span class="text-danger small ms-2">Failed to load trending items.</span>'; }
+            } catch(e) { 
+                box.innerHTML = '<span class="text-danger small ms-2">Failed to load media. Check internet.</span>'; 
+            }
         }
-        window.addEventListener('load', loadSiteData);
+        window.addEventListener('load', fetchRandomData);
         
-        // Anti-Inspect
+        // Anti-Inspect protection
         document.addEventListener("contextmenu", e => e.preventDefault());
     </script>
 </body>
