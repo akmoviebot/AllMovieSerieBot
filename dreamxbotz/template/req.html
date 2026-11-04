@@ -262,8 +262,8 @@
         &copy; <script>document.write(new Date().getFullYear())</script> CineHubPro Premium. All rights reserved.
     </footer>
 
-    <!-- Download Modal Overlay (Timer + Ad) -->
-    <div id="download-modal">
+    <!-- Download Modal Overlay (Timer + Ad) YAHAN FIX KIYA GAYA HAI ID -->
+    <div id="dl-modal">
         <div class="dl-modal-content">
             <h5 class="text-white fw-bold mb-1">Generating Link...</h5>
             <p class="text-muted small mb-3">Link ready in <span id="dl-timer" class="text-danger fw-bold fs-4">10</span>s</p>
@@ -340,7 +340,7 @@
 
         // --- DOWNLOAD TIMER LOGIC ---
         function startDownload() {
-            const modal = document.getElementById('download-modal');
+            const modal = document.getElementById('dl-modal'); // YAHAN FIX KIYA GAYA HAI ID
             const dltxt = document.getElementById('dl-timer');
             modal.style.display = 'flex';
             let t = 10; dltxt.textContent = t;
