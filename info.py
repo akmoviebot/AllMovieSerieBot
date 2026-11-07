@@ -56,7 +56,7 @@ PREMIUM_LOGS = int(environ.get('PREMIUM_LOGS', '-1002428095842'))          # Pre
 DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '-1002428095842').split()]
 
 # Support Group & Request Channel
-support_chat_id = environ.get('SUPPORT_CHAT_ID', '-1002249219491')
+support_chat_id = environ.get('SUPPORT_CHAT_ID', '-1002489054339')
 SUPPORT_CHAT_ID = int(support_chat_id) if support_chat_id and id_pattern.search(support_chat_id) else None
 SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'https://t.me/CineHubProsupport')
 
@@ -65,8 +65,8 @@ REQST_CHANNEL = int(reqst_channel) if reqst_channel and id_pattern.search(reqst_
 INDEX_REQ_CHANNEL = int(environ.get('INDEX_REQ_CHANNEL', LOG_CHANNEL))
 
 # Force Subscription Channels (Users must join these before using the bot)
-auth_req_channels = environ.get("AUTH_REQ_CHANNELS", "-1002249219491")
-auth_channels = environ.get("AUTH_CHANNELS", "-1002249219491")
+auth_req_channels = environ.get("AUTH_REQ_CHANNELS", "-1002489054339")
+auth_channels = environ.get("AUTH_CHANNELS", "-1002489054339")
 AUTH_REQ_CHANNELS = [int(ch) for ch in auth_req_channels.split() if ch and id_pattern.match(ch)]
 AUTH_CHANNELS = [int(ch) for ch in auth_channels.split() if ch and id_pattern.match(ch)]
 
