@@ -6,9 +6,9 @@
     <!-- PWA Setup (For App Install Vibe) -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>{{file_name}} | CineHubPro Premium</title>
+    <title>{{ file_name }} | CineHubPro Premium</title>
     
-    <meta property="og:title" content="Watch {{file_name}} in HD">
+    <meta property="og:title" content="Watch {{ file_name }} in HD">
     <meta property="og:description" content="High-Speed Bufferless Stream on CineHubPro.">
     <meta property="og:image" itemprop="image" content="https://img.icons8.com/color/512/cinema-.png">
     
@@ -21,13 +21,42 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.18/dist/hls.min.js"></script>
 
     <style>
         /* === ORIGINAL PREMIUM THEME === */
-        :root { --red-main: #e50914; --bg-dark: #050508; --bg-card: #121216; --text-main: #ffffff; --text-muted: #8e8e93; --gold: #ffc107; --plyr-color-main: #e50914; }
-        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Segoe UI', system-ui, sans-serif; overflow-x: hidden; margin: 0; padding-bottom: 20px; transition: 0.3s; }
+        :root { 
+            --red-main: #e50914; 
+            --bg-dark: #050508; 
+            --bg-card: #121216; 
+            --text-main: #ffffff; 
+            --text-muted: #8e8e93; 
+            --gold: #ffc107; 
+            --plyr-color-main: #e50914; 
+        }
+        body { 
+            background-color: var(--bg-dark); 
+            color: var(--text-main); 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            overflow-x: hidden; 
+            margin: 0; 
+            padding-bottom: 20px; 
+            transition: 0.3s; 
+        }
         
-        .app-header { background: rgba(5, 5, 8, 0.95); backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 1000; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(229,9,20,0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.6); }
+        .app-header { 
+            background: rgba(5, 5, 8, 0.95); 
+            backdrop-filter: blur(15px); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            padding: 12px 15px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 1px solid rgba(229,9,20,0.3); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6); 
+        }
         .brand-box { display: flex; align-items: center; gap: 8px; text-decoration: none; position: relative; }
         .brand-icon { font-size: 1.8rem; color: var(--red-main); filter: drop-shadow(0 0 8px rgba(229,9,20,0.6)); }
         .brand-text { font-size: 1.4rem; font-weight: 900; color: #fff; margin: 0; letter-spacing: -0.5px; position: relative; }
@@ -85,7 +114,7 @@
         .float-emoji { position: absolute; bottom: 0; font-size: 1.2rem; opacity: 1; animation: floatUp 2.5s ease-in forwards; }
         @keyframes floatUp { 0% { transform: translateY(0) scale(1); opacity: 1; } 100% { transform: translateY(-120px) scale(1.5); opacity: 0; } }
 
-        /* === 100+ FEATURES HORIZONTAL TOOLS === */
+        /* === FEATURES HORIZONTAL TOOLS === */
         .feature-category { font-size: 0.75rem; font-weight: 800; color: var(--text-muted); margin: 15px 15px 5px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 6px;}
         .tools-row { display: flex; gap: 10px; padding: 5px 15px 15px; overflow-x: auto; scroll-behavior: smooth; position: relative; z-index: 5;}
         .tools-row::-webkit-scrollbar { display: none; }
@@ -101,15 +130,15 @@
         .mega-dashboard-btn:active { transform: scale(0.97); }
         @keyframes pulseMega { 0% { box-shadow: 0 0 0 0 rgba(229,9,20,0.4); } 70% { box-shadow: 0 0 0 10px rgba(229,9,20,0); } 100% { box-shadow: 0 0 0 0 rgba(229,9,20,0); } }
 
-        /* === DOWNLOAD BANNER (Spam Fixed) === */
+        /* === DOWNLOAD BANNER === */
         .download-cta { margin: 10px 15px; background: linear-gradient(135deg, var(--red-main), #900000); border-radius: 12px; padding: 15px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; box-shadow: 0 8px 20px rgba(229,9,20,0.25); border: 1px solid #ff4d4d; position: relative; overflow: hidden; transition: 0.3s;}
         .download-cta:active { transform: scale(0.97); }
-        .download-cta.locked { opacity: 0.6; cursor: not-allowed; pointer-events: none; } /* Double click fix */
+        .download-cta.locked { opacity: 0.6; cursor: not-allowed; pointer-events: none; }
         .dl-text h5 { color: #fff; font-size: 1rem; font-weight: 800; margin: 0 0 4px 0; }
         .dl-text p { color: rgba(255,255,255,0.85); font-size: 0.75rem; margin: 0; font-weight: 600; }
         .dl-icon { background: rgba(0,0,0,0.25); width: 42px; height: 42px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #fff; font-size: 1.2rem; backdrop-filter: blur(5px); }
 
-        /* Original App Grid & Feeds */
+        /* External App Grid & Feeds */
         .section-title { font-size: 0.85rem; font-weight: 800; color: var(--text-muted); margin: 25px 15px 12px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; }
         .apps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 0 15px; }
         @media (max-width: 400px) { .apps-grid { grid-template-columns: repeat(3, 1fr); } }
@@ -149,7 +178,7 @@
 </head>
 <body>
 
-    <div id="lights-off" class="lights-off-overlay" onclick="toggleTheaterMode()"></div>
+    <div id="lights-off" class="lights-off-overlay" onclick="toggleTheater()"></div>
 
     <!-- HEADER -->
     <header class="app-header">
@@ -165,12 +194,12 @@
 
     <!-- META INFO -->
     <div class="meta-container animate__animated animate__fadeInDown">
-        <h2 class="vid-title" id="vidTitle">{{file_name}}</h2>
+        <h2 class="vid-title" id="vidTitle">{{ file_name }}</h2>
         <div class="badge-row">
             <span class="badge-item imdb"><i class="fa-solid fa-star"></i> 9.1</span>
             <span class="badge-item border-secondary">4K HDR</span>
             <span class="badge-item audio"><i class="fa-solid fa-language"></i> Dual Audio</span>
-            <span class="badge-item border-secondary" id="quality-ui"><i class="fa-solid fa-film"></i> 1080p</span>
+            <span class="badge-item border-secondary" id="quality-ui"><i class="fa-solid fa-film"></i> <select id="quality-select" aria-label="Video quality" style="background:transparent;color:inherit;border:0;font-weight:800;outline:none;max-width:105px"><option value="-1">Auto</option></select></span>
             <span class="live-status"><i class="fa-solid fa-signal fa-fade"></i> <span id="live-count">3,452</span> Watching</span>
         </div>
     </div>
@@ -200,7 +229,7 @@
         <!-- Floating Reactions -->
         <div id="reaction-box" class="reaction-container"></div>
 
-        <!-- ORIGINAL ADSTERRA PRE-ROLL -->
+        <!-- ADSTERRA PRE-ROLL -->
         <div id="yt-ad-overlay" class="yt-ad-overlay">
             <div class="ad-top-bar">
                 <span class="sponsor-tag">Sponsored</span>
@@ -219,7 +248,7 @@
             <div class="pause-brand"><i class="fa-solid fa-play"></i><div>CineHub<span>Pro</span></div></div>
         </div>
 
-        <!-- FAST BUFFERING VIDEO TAG (Source injects late for speed) -->
+        <!-- FAST BUFFERING VIDEO TAG -->
         <video id="player" playsinline controls preload="metadata" crossorigin="anonymous">
             <!-- Dynamic Source -->
         </video>
@@ -244,9 +273,7 @@
         </button>
     </div>
 
-    <!-- ============================================== -->
-    <!-- 🔥 FIXED SPAM-PROOF DOWNLOAD BANNER 🔥         -->
-    <!-- ============================================== -->
+    <!-- DOWNLOAD BANNER -->
     <div class="download-cta animate__animated animate__fadeInUp" id="dl-banner" onclick="startDownload()">
         <div class="dl-text">
             <h5>Download Original File</h5>
@@ -286,7 +313,7 @@
         &copy; <script>document.write(new Date().getFullYear())</script> CineHubPro Premium. All rights reserved.
     </footer>
 
-    <!-- DOWNLOAD MODAL (Superfast 3 Sec Timer) -->
+    <!-- DOWNLOAD MODAL (3 Sec Timer) -->
     <div id="dl-modal">
         <div class="dl-modal-content">
             <h5 class="text-white fw-bold mb-1">Generating Link...</h5>
@@ -298,7 +325,6 @@
         </div>
     </div>
 
-
     <!-- ============================================== -->
     <!-- MEGA DASHBOARD PANEL (Bottom Sheet)            -->
     <!-- ============================================== -->
@@ -308,7 +334,6 @@
             <button class="close-panel" onclick="closeMegaPanel()"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <div class="panel-content">
-            
             <div class="panel-section-title"><i class="fa-solid fa-eye"></i> Visual FX (CSS)</div>
             <div class="mega-grid">
                 <div class="mega-tool" onclick="vFX('none', this)"><i class="fa-solid fa-ban"></i><span>Normal</span></div>
@@ -341,9 +366,8 @@
         </div>
     </div>
 
-
     <!-- ============================================== -->
-    <!-- 2026 MEGA JAVASCRIPT ENGINE (All 30 Features)  -->
+    <!-- JAVASCRIPT ENGINE                              -->
     <!-- ============================================== -->
     <script>
         // 0. Utilities & Haptics
@@ -355,7 +379,7 @@
         if(titleElem && titleElem.textContent.length > 55){ titleElem.textContent = titleElem.textContent.slice(0, 55)+"..."; }
         const lsKey = `cinehub_resume_${cleanTitle.replace(/\s/g,'_')}`;
 
-        // 1. PLYR ENGINE (Speed, Captions)
+        // 1. PLYR ENGINE
         const playerControls = ['play-large', 'rewind', 'play', 'fast-forward', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'pip', 'fullscreen'];
         let playerInstance;
         
@@ -369,7 +393,7 @@
             startFloatingReactions();
         });
 
-        // 2. YOUTUBE PRE-ROLL & SMART INJECT (Turbo Stream)
+        // 2. AD & OVERLAY HANDLING
         const adLayer = document.getElementById('yt-ad-overlay');
         const timerBox = document.getElementById('timer-box');
         const skipBtn = document.getElementById('skip-btn');
@@ -401,19 +425,82 @@
             playerInstance.on('timeupdate', () => {
                 const ct = playerInstance.currentTime;
                 if(ct > 5 && !playerInstance.paused) localStorage.setItem(lsKey, ct);
-                // Show Skip Intro between 5s and 60s
                 if(ct > 5 && ct < 60 && !playerInstance.paused) document.getElementById('skip-intro-btn').style.display = 'block';
                 else document.getElementById('skip-intro-btn').style.display = 'none';
             });
         }
 
+        // HLS adaptive streaming
+        let cineHls = null;
+        let cineHlsStarted = false;
+        function startCineHubHls(masterUrl) {
+            const video = document.getElementById('player');
+            const qualitySelect = document.getElementById('quality-select');
+            const qualityBadge = document.getElementById('quality-ui');
+
+            if (window.Hls && Hls.isSupported()) {
+                cineHls = new Hls({
+                    enableWorker: true,
+                    capLevelToPlayerSize: false,
+                    startLevel: -1,
+                    maxBufferLength: 30
+                });
+                cineHls.loadSource(masterUrl);
+                cineHls.attachMedia(video);
+                cineHls.on(Hls.Events.MANIFEST_PARSED, function () {
+                    qualitySelect.innerHTML = '<option value="-1">Auto</option>';
+                    const seen = new Set();
+                    cineHls.levels.forEach((level, index) => {
+                        const height = Number(level.height || 0);
+                        if (!height || seen.has(height)) return;
+                        seen.add(height);
+                        const option = document.createElement('option');
+                        option.value = String(index);
+                        option.textContent = height + 'p';
+                        qualitySelect.appendChild(option);
+                    });
+                    qualitySelect.disabled = seen.size === 0;
+                    video.play().catch(() => {});
+                });
+                cineHls.on(Hls.Events.LEVEL_SWITCHED, function (_event, data) {
+                    const level = cineHls.levels[data.level];
+                    if (level && level.height) {
+                        qualityBadge.dataset.currentQuality = level.height + 'p';
+                    }
+                });
+                qualitySelect.addEventListener('change', function () {
+                    if (cineHls) cineHls.currentLevel = Number(this.value);
+                });
+                cineHls.on(Hls.Events.ERROR, function (_event, data) {
+                    if (data.fatal) {
+                        featureToast('Stream Error', 'Reload the page or switch quality to Auto.');
+                        if (data.type === Hls.ErrorTypes.NETWORK_ERROR) cineHls.startLoad();
+                        else if (data.type === Hls.ErrorTypes.MEDIA_ERROR) cineHls.recoverMediaError();
+                    }
+                });
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = masterUrl;
+                qualitySelect.innerHTML = '<option value="-1">Auto (Device)</option>';
+                qualitySelect.disabled = true;
+                video.play().catch(() => {});
+            } else {
+                featureToast('Unsupported Browser', 'Please open this stream in an updated browser.');
+            }
+        }
+
         function skipAd() {
             haptic();
             adLayer.style.display = 'none';
-            const vid = document.getElementById('player');
-            if (!vid.querySelector('source')) {
-                // INJECT URL FOR FULL SPEED
-                playerInstance.source = { type: 'video', sources: [{ src: '{{file_url}}', type: 'video/mp4' }] };
+            if (!cineHlsStarted) {
+                cineHlsStarted = true;
+                if ('{{ hls_url }}') {
+                    startCineHubHls('{{ hls_url }}');
+                } else {
+                    playerInstance.source = {
+                        type: 'video',
+                        sources: [{ src: '{{ file_url }}', type: '{{ mime_type }}' }]
+                    };
+                }
             }
             
             let savedTime = localStorage.getItem(lsKey);
@@ -423,11 +510,11 @@
             }
             playerInstance.play().catch(e=>{}); 
 
-            // 3. 18+ VIP TRAP TRIGGER (At 25s)
+            // 18+ VIP Popup trigger at 25 seconds
             setTimeout(show18PlusPopup, 25000);
         }
 
-        // 4. 18+ VIP POPUP
+        // 3. 18+ VIP POPUP
         let popupShown = false;
         function show18PlusPopup() {
             if(popupShown) return; popupShown = true;
@@ -445,31 +532,26 @@
             });
         }
 
-        // 5. 🔥 FIXED: SPAM-PROOF DOWNLOAD BANNER (Double Ad Blocked + 3s Speed) 🔥
+        // 4. DOWNLOAD BANNER (Spam-Proof)
         let isDownloading = false;
         function startDownload() {
             haptic();
             const btn = document.getElementById('dl-banner');
-            
-            // SECURITY LOCK: Agar process already chal raha hai, toh click ignore karo!
             if(isDownloading) return; 
             
             isDownloading = true;
-            btn.classList.add('locked'); // UI ko thoda dim kar dega
+            btn.classList.add('locked');
             
             const modal = document.getElementById('dl-modal');
             const dltxt = document.getElementById('dl-timer');
             modal.style.display = 'flex';
             
-            let t = 3; dltxt.textContent = t; // Timer set to fast 3 Seconds
+            let t = 3; dltxt.textContent = t;
             let iv = setInterval(() => {
                 t--; dltxt.textContent = t;
                 if(t <= 0) {
                     clearInterval(iv);
-                    // Single Redirect (Ye click event generate karega Ad ke liye + redirect karega)
                     window.location.href = window.location.href.replace("/watch/", "/");
-                    
-                    // Reset mechanism after 2 seconds
                     setTimeout(() => { 
                         modal.style.display = 'none'; 
                         isDownloading = false; 
@@ -479,12 +561,11 @@
             }, 1000);
         }
 
-        // 6. DOUBLE-TAP TO SEEK & SWIPE GESTURES
+        // 5. DOUBLE-TAP TO SEEK & SWIPES
         function initDoubleTapAndSwipe() {
             const wrap = document.getElementById('vid-wrapper');
             let lastTap = 0, startX = 0, startY = 0;
             
-            // Double Tap
             wrap.addEventListener('click', (e) => {
                 let currTime = new Date().getTime();
                 if(currTime - lastTap < 300) {
@@ -510,31 +591,29 @@
                 lastTap = currTime;
             });
 
-            // Swipe (Brightness CSS & Volume API)
             let curBright = 1;
             wrap.addEventListener('touchstart', e => { startX = e.touches[0].clientX; startY = e.touches[0].clientY; });
             wrap.addEventListener('touchmove', e => {
-                if(Math.abs(e.touches[0].clientX - startX) < 50) { // Vertical swipe
-                    e.preventDefault(); // Stop scrolling
+                if(Math.abs(e.touches[0].clientX - startX) < 50) {
+                    e.preventDefault();
                     let diff = startY - e.touches[0].clientY;
-                    if(startX < window.innerWidth / 2) { // Left side - Brightness
+                    if(startX < window.innerWidth / 2) {
                         curBright = Math.max(0.2, Math.min(2, curBright + (diff * 0.005)));
                         document.getElementById('player').style.filter = `brightness(${curBright})`;
-                    } else { // Right side - Volume
+                    } else {
                         playerInstance.volume = Math.max(0, Math.min(1, playerInstance.volume + (diff * 0.005)));
                     }
                 }
             }, {passive: false});
         }
 
-        // 7. SUBTITLE UPLOADER (.srt to VTT converter)
+        // 6. CUSTOM SUBTITLES
         function loadCustomSubtitle(event) {
             const file = event.target.files[0];
             if(!file) return;
             const reader = new FileReader();
             reader.onload = function(e) {
                 let text = e.target.result;
-                // Basic SRT to VTT logic
                 let vttText = "WEBVTT\n\n" + text.replace(/(\d{2}:\d{2}:\d{2}),(\d{3})/g, "$1.$2");
                 const blob = new Blob([vttText], { type: 'text/vtt' });
                 const url = URL.createObjectURL(blob);
@@ -546,7 +625,7 @@
             reader.readAsText(file);
         }
 
-        // 8. AUDIO BOOST 200% (Web Audio API)
+        // 7. AUDIO BOOST
         let audioCtx, gainNode, isBoosted = false;
         function boostAudio(btn) {
             haptic();
@@ -561,21 +640,20 @@
                     gainNode.connect(audioCtx.destination);
                 }
                 isBoosted = !isBoosted;
-                gainNode.gain.value = isBoosted ? 2.0 : 1.0; // 200% or normal
+                gainNode.gain.value = isBoosted ? 2.0 : 1.0;
                 btn.classList.toggle('active');
                 featureToast('Audio Engine', isBoosted ? 'Volume Boosted to 200% 🎧' : 'Volume Normal');
             } catch(e) { featureToast('CORS Error', 'Cross-origin blocked Audio API.'); }
         }
 
-        // 9. SMART AUTO-PAUSE
+        // 8. AUTO-PAUSE
         document.addEventListener("visibilitychange", () => {
             if (document.hidden && playerInstance && !playerInstance.paused) {
                 playerInstance.pause();
-                console.log("Auto-Paused via Smart Sensor");
             }
         });
 
-        // 10. FLOATING REACTIONS & VIEWERS
+        // 9. REACTIONS & VIEWERS
         function startFloatingReactions() {
             const emojis = ['❤️', '🔥', '😂', '😮', '👍'];
             setInterval(() => {
@@ -589,13 +667,12 @@
                 }
             }, 800);
             
-            // Viewers logic
             const countElem = document.getElementById('live-count');
             let cv = 3452; 
             setInterval(() => { cv += (Math.floor(Math.random() * 15) - 5); countElem.textContent = cv.toLocaleString(); }, 4000);
         }
 
-        // 11. MEGA DASHBOARD UI
+        // 10. MEGA DASHBOARD UI & TOOLS
         function btnHaptic(btn, msg) { haptic(); btn.classList.toggle('active'); let icon = btn.querySelector('i'); if(btn.classList.contains('active')) { icon.classList.replace('fa-regular', 'fa-solid'); featureToast('Success', msg); } else { icon.classList.replace('fa-solid', 'fa-regular'); } }
         function openMegaPanel() { haptic(); document.getElementById('megaPanel').classList.add('open'); }
         function closeMegaPanel() { document.getElementById('megaPanel').classList.remove('open'); }
@@ -617,7 +694,19 @@
             document.getElementById('player').style.transform = `scale(${tState.scale}) rotate(${tState.rot}deg) scaleX(${tState.fx}) scaleY(${tState.fy})`;
         }
 
-        function toggleTheater() { haptic(); const bg = document.getElementById('theater-bg'); const wrap = document.getElementById('vid-wrapper'); if(bg.style.display === 'block') { bg.style.display = 'none'; wrap.classList.remove('player-theater-mode'); } else { bg.style.display = 'block'; wrap.classList.add('player-theater-mode'); closeMegaPanel(); } }
+        function toggleTheater() { 
+            haptic(); 
+            const bg = document.getElementById('lights-off'); 
+            const wrap = document.getElementById('vid-wrapper'); 
+            if(bg.style.display === 'block') { 
+                bg.style.display = 'none'; 
+                wrap.classList.remove('theater-mode'); 
+            } else { 
+                bg.style.display = 'block'; 
+                wrap.classList.add('theater-mode'); 
+                closeMegaPanel(); 
+            } 
+        }
         function toggleAmbient() { haptic(); document.getElementById('vid-wrapper').classList.toggle('ambient-mode'); featureToast('Ambient Glow', 'Toggled successfully.'); }
         async function reqPiP() { haptic(); const vid = document.getElementById('player'); try { if (vid !== document.pictureInPictureElement) await vid.requestPictureInPicture(); else await document.exitPictureInPicture(); } catch(err) { featureToast('Error', 'PiP not supported.'); } }
         function takeSnap() { haptic(); const vid = document.getElementById('player'); if (vid.readyState === 0) return featureToast('Error', 'Play video first.'); try { const can = document.createElement('canvas'); can.width = vid.videoWidth; can.height = vid.videoHeight; can.getContext('2d').drawImage(vid, 0, 0, can.width, can.height); const a = document.createElement('a'); a.href = can.toDataURL('image/jpeg', 0.9); a.download = 'CineHub_HD_Snap.jpg'; a.click(); featureToast('Saved', 'HD Snapshot saved to device.'); } catch(e) { featureToast('Error', 'Restricted by browser.'); } }
@@ -625,9 +714,9 @@
         function toggleLock() { haptic(); const lock = document.getElementById('lock-overlay'); if(lock.style.display === 'flex') { lock.style.display = 'none'; featureToast('Unlocked', 'Screen touch restored.'); } else { lock.style.display = 'flex'; featureToast('Locked', 'Screen touch disabled.'); closeMegaPanel(); } }
         function skipIntro() { haptic(); playerInstance.currentTime += 80; featureToast('Skipped', 'Skipped intro sequence.'); document.getElementById('skip-intro-btn').style.display='none'; }
         function shareMedia() { haptic(); if (navigator.share) navigator.share({ title: 'Watch on CineHubPro', url: window.location.href }); else { navigator.clipboard.writeText(window.location.href); featureToast('Copied!', 'Link copied to clipboard.'); } }
-        function fakeQualityUI() { haptic(); document.getElementById('quality-ui').innerHTML = '<i class="fa-solid fa-bolt text-warning"></i> Turbo 1080p'; featureToast('Quality Set', 'Forced to 1080p High-Speed Server.'); }
+        function fakeQualityUI() { haptic(); const q = document.getElementById('quality-select'); if(q) { q.focus(); } featureToast('Video Quality', 'Choose Auto or an available resolution.'); }
 
-        // --- ORIGINAL APPS & FEED ---
+        // --- EXTERNAL APPS & FEED ---
         function openApp(app) {
             const link = window.location.href.replace("/watch/", "/"); let url = "";
             if(app === 'vlc') url = `intent://${link.replace(/^https?:\/\//, '')}#Intent;package=org.videolan.vlc;scheme=https;type=video/*;end;`;
@@ -643,12 +732,12 @@
             const arr = [
                 {title: "Latest Bollywood Hit", img: "https://image.tmdb.org/t/p/w500/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg", link: "https://cinehubpro.free.nf"},
                 {title: "Trending Hollywood Dub", img: "https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg", link: "https://cinehubpro.free.nf"},
-                {title: "New Web Series 2026", img: "https://image.tmdb.org/t/p/w500/rweIrveL43TaxUN0akQEaAXL6x0.jpg", link: "https://cinehubpro.free.nf"},
+                {title: "New Web Series", img: "https://image.tmdb.org/t/p/w500/rweIrveL43TaxUN0akQEaAXL6x0.jpg", link: "https://cinehubpro.free.nf"},
                 {title: "South Indian Blockbuster", img: "https://image.tmdb.org/t/p/w500/kDp1vUBnMpe8ak4rjgl3cLELqjU.jpg", link: "https://cinehubpro.free.nf"},
                 {title: "Action Thriller Movie", img: "https://image.tmdb.org/t/p/w500/c24MzOxl33kYf1P0r7x1Y4b0nZ3.jpg", link: "https://cinehubpro.free.nf"}
             ];
             let html = ''; arr.sort(() => 0.5 - Math.random()).slice(0, 5).forEach(item => {
-                html += `<a href="${item.link}" target="_blank" class="feed-card"><span class="feed-tag">HD</span><img src="${item.img}" class="feed-poster"><div class="feed-title">${item.title}</div></a>`;
+                html += `<a href="${item.link}" target="_blank" class="feed-card"><span class="feed-tag">HD</span><img src="${item.img}" class="feed-poster" alt="poster"><div class="feed-title">${item.title}</div></a>`;
             });
             box.innerHTML = html;
         }
